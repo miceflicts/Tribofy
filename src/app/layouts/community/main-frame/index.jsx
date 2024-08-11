@@ -16,9 +16,9 @@ export default function MainFrame() {
             <Filter text={"General"}></Filter>
             <Filter text={"General"}></Filter>
           </div>
-          <Post></Post>
-          <Post></Post>
-          <Post></Post>
+          <Post isPinned={true}></Post>
+          <Post isPinned={false}></Post>
+          <Post isPinned={false}></Post>
         </div>
 
         <div className="flex h-[90%] min-w-[270px] rounded-xl border border-border bg-emphasis max-[850px]:hidden"></div>
