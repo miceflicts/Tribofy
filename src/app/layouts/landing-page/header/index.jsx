@@ -1,7 +1,7 @@
 import React from "react";
 import { Tent } from "lucide-react";
 
-export default function Header(props) {
+export default function LandingPageHeader() {
   return (
     <>
       <header className="fixed flex w-full h-[90px] max-[810px]:h-[64px] items-center justify-center ">
