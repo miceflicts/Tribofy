@@ -2,11 +2,11 @@ import CommunitiesSections from "@/app/components/community/communities-sections
 import CommunitiesSidebar from "@/app/components/community/communities-sidebar";
 import React from "react";
 
-export default function LeftSideBar({ isShowingAddCommunities }) {
+export default function LeftSideBar({ isShowingAddCommunities, deviceWidth }) {
   return (
     <>
       <div
-        className={`bg-emphasis fixed flex min-h-full ${isShowingAddCommunities ? "w-[380px]" : "w-[300px]"} border-r border-border`}
+        className={`fixed flex min-h-full bg-emphasis ${isShowingAddCommunities ? "w-[380px]" : "w-[300px]"} border-r border-border`}
       >
         <div className={`${isShowingAddCommunities ? "flex" : "hidden"}`}>
           <CommunitiesSidebar></CommunitiesSidebar>

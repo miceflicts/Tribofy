@@ -16,13 +16,13 @@ export default function CommunitiesSections() {
 
         <div className="mt-[1rem] flex h-fit w-full flex-col gap-3 px-4">
           <div className="flex h-fit w-full flex-col">
-            <div className="bg-highlight h-[40px] w-full rounded-lg"></div>
+            <div className="h-[40px] w-full rounded-lg bg-highlight"></div>
           </div>
           <div className="flex h-fit w-full flex-col">
-            <div className="bg-highlight h-[40px] w-full rounded-lg"></div>
+            <div className="h-[40px] w-full rounded-lg bg-highlight"></div>
           </div>
           <div className="flex h-fit w-full flex-col">
-            <div className="bg-highlight h-[40px] w-full rounded-lg"></div>
+            <div className="h-[40px] w-full rounded-lg bg-highlight"></div>
           </div>
         </div>
       </div>
