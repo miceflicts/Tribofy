@@ -36,7 +36,7 @@ export default function Community() {
           toggleSidebar={() => setSidebarToggled(!sidebarToggled)}
         ></CommunityHeader>
 
-        <div className="flex h-full w-full flex-row">
+        <div className="mt-[50px] flex h-full w-full flex-row max-[1024px]:mt-[64px]">
           <div
             className={`h-full w-fit ${isShowingAddCommunities ? "min-w-[380px]" : "min-w-[300px]"} ${width >= 1024 ? "flex" : sidebarToggled ? "flex" : "hidden"}`}
           >

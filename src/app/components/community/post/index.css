@@ -1,0 +1,17 @@
+h4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limita a 2 linhas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: clip; /* Remove as reticências */
+  word-break: break-word; /* Garante que a palavra não será cortada no meio */
+}
+
+.breakOneLine {
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* Limita a 2 linhas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: clip; /* Remove as reticências */
+  word-break: break-word; /* Garante que a palavra não será cortada no meio */
+}

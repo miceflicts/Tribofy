@@ -8,8 +8,8 @@ import ThemeToggleButton from "@/app/components/general/theme-toggle-button";
 export default function CommunityHeader({ toggleSidebar }) {
   return (
     /* Community page header */
-    <header className="z-10 flex min-h-[50px] w-full max-[1024px]:min-h-[64px]">
-      <div className="flex h-full w-full items-center justify-between border-b border-border bg-emphasis pl-6 pr-6">
+    <header className="fixed z-10 flex w-full">
+      <div className="flex h-full min-h-[50px] w-full items-center justify-between border-b border-border bg-emphasis pl-6 pr-6 max-[1024px]:min-h-[64px]">
         {/* Keyboard shortcuts / hamburger div */}
         <div className="flex h-[35px] w-[35px] cursor-pointer items-center justify-center rounded-lg hover:bg-secondary max-[1024px]:h-[45px] max-[1024px]:w-[45px]">
           <Command className="text-foreground max-[1024px]:hidden" size={19} />
