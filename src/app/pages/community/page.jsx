@@ -3,12 +3,14 @@
 import useWindowDimensions from "@/app/hooks/use-window-dimensions";
 import CommunityHeader from "@/app/layouts/community/header";
 import LeftSideBar from "@/app/layouts/community/left-sidebar";
+import MainFrame from "@/app/layouts/community/main-frame";
 import React, { useState, useEffect } from "react";
 
 export default function Community() {
   const { width, height } = useWindowDimensions();
   const [sidebarToggled, setSidebarToggled] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const isShowingAddCommunities = true;
 
   useEffect(() => {
     setIsMounted(true);
@@ -25,12 +27,18 @@ export default function Community() {
           toggleSidebar={() => setSidebarToggled(!sidebarToggled)}
         ></CommunityHeader>
 
-        <div
-          className={`h-full w-full ${width >= 1024 ? "flex" : sidebarToggled ? "flex" : "hidden"}`}
-        >
-          <LeftSideBar isShowingAddCommunities={true}></LeftSideBar>
+        <div className="flex h-full w-full flex-row">
+          <div
+            className={`h-full w-fit ${isShowingAddCommunities ? "min-w-[380px]" : "min-w-[300px]"} ${width >= 1024 ? "flex" : sidebarToggled ? "flex" : "hidden"}`}
+          >
+            <LeftSideBar
+              isShowingAddCommunities={isShowingAddCommunities}
+            ></LeftSideBar>
+          </div>
 
-          <div className="bg-purple-500"></div>
+          <div className="flex h-full w-full justify-between px-10 pt-10 max-[1260px]:px-2 max-[900px]:px-4">
+            <MainFrame></MainFrame>
+          </div>
         </div>
       </div>
     </>

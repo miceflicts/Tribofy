@@ -1,0 +1,44 @@
+"use client";
+
+import useWindowDimensions from "@/app/hooks/use-window-dimensions";
+import CommunityHeader from "@/app/layouts/community/header";
+import LeftSideBar from "@/app/layouts/community/left-sidebar";
+import React, { useState, useEffect } from "react";
+
+export default function CommunitySection() {
+  const { width, height } = useWindowDimensions();
+  const [sidebarToggled, setSidebarToggled] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null; // ou um loader/placeholder
+  }
+
+  return (
+    <>
+      <div className="min-w-screen flex h-screen min-h-screen flex-col">
+        <CommunityHeader
+          toggleSidebar={() => setSidebarToggled(!sidebarToggled)}
+        ></CommunityHeader>
+
+        <div className="flex h-full w-full flex-row">
+          <div
+            className={`h-full w-fit ${isShowingAddCommunities ? "min-w-[380px]" : "min-w-[300px]"} ${width >= 1024 ? "flex" : sidebarToggled ? "flex" : "hidden"}`}
+          >
+            <LeftSideBar
+              isShowingAddCommunities={isShowingAddCommunities}
+            ></LeftSideBar>
+          </div>
+
+          <div className="flex h-full w-full justify-between px-10 pt-10">
+            <div className="h-full w-full bg-yellow-300"> </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
