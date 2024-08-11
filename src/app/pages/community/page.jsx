@@ -10,11 +10,20 @@ export default function Community() {
   const { width, height } = useWindowDimensions();
   const [sidebarToggled, setSidebarToggled] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-  const isShowingAddCommunities = true;
+
+  const [isShowingAddCommunities, setIsShowingAddCommunities] = useState(true);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (width <= 1260) {
+      setIsShowingAddCommunities(false);
+    } else {
+      setIsShowingAddCommunities(true);
+    }
+  }, [width]);
 
   if (!isMounted) {
     return null; // ou um loader/placeholder
