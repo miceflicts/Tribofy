@@ -3,11 +3,20 @@
 import useWindowDimensions from "@/app/hooks/use-window-dimensions";
 import CommunityHeader from "@/app/layouts/community/header";
 import LeftSideBar from "@/app/layouts/community/left-sidebar";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function Community() {
   const { width, height } = useWindowDimensions();
   const [sidebarToggled, setSidebarToggled] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null; // ou um loader/placeholder
+  }
 
   return (
     <>
@@ -17,9 +26,11 @@ export default function Community() {
         ></CommunityHeader>
 
         <div
-          className={`flex h-full w-full ${width <= 900 && sidebarToggled === false ? "hidden" : "flex"}`}
+          className={`h-full w-full ${width >= 1024 ? "flex" : sidebarToggled ? "flex" : "hidden"}`}
         >
-          <LeftSideBar isShowingAddCommunities={false}></LeftSideBar>
+          <LeftSideBar isShowingAddCommunities={true}></LeftSideBar>
+
+          <div className="bg-purple-500"></div>
         </div>
       </div>
     </>
