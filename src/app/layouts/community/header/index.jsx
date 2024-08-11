@@ -5,15 +5,18 @@ import { Command, Bell, MessageCircleMore, Search, Menu } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import ThemeToggleButton from "@/app/components/general/theme-toggle-button";
 
-export default function CommunityHeader() {
+export default function CommunityHeader({ toggleSidebar }) {
   return (
     /* Community page header */
-    <header className="flex h-[50px] w-full max-[900px]:h-[64px]">
-      <div className="bg-emphasis flex h-full w-full items-center justify-between border-b border-border pl-7 pr-7">
+    <header className="z-10 flex min-h-[50px] w-full max-[900px]:min-h-[64px]">
+      <div className="bg-emphasis flex h-full w-full items-center justify-between border-b border-border pl-6 pr-6">
         {/* Keyboard shortcuts / hamburger div */}
         <div className="flex h-[35px] w-[35px] cursor-pointer items-center justify-center rounded-lg hover:bg-secondary max-[900px]:h-[45px] max-[900px]:w-[45px]">
           <Command className="text-foreground max-[900px]:hidden" size={19} />
-          <Menu className="h-[30px] w-[30px] text-foreground min-[900px]:hidden"></Menu>
+          <Menu
+            className="h-[30px] w-[30px] text-foreground min-[900px]:hidden"
+            onClick={toggleSidebar}
+          ></Menu>
         </div>
 
         {/* Search div */}

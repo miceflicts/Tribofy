@@ -24,6 +24,8 @@ module.exports = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         emphasis: "hsl(var(--emphasis))",
+        highlight: "hsl(var(--highlight))",
+        "highlighted-text": "hsl(var(--highlighted-text))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
