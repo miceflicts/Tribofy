@@ -2,7 +2,7 @@ import CommunitiesSections from "@/app/components/community/communities-sections
 import CommunitiesSidebar from "@/app/components/community/communities-sidebar";
 import React from "react";
 
-export default function LeftSideBar({}) {
+export default function LeftSideBar({ isShowingAddCommunities }) {
   return (
     <>
       <div
