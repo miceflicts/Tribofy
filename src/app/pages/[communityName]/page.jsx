@@ -63,7 +63,7 @@ export default function Community() {
         <div className="mt-[50px] flex h-full w-full flex-row max-[1024px]:mt-[64px]">
           <div
             ref={sidebarRef}
-            className={`z-20 h-full w-fit max-[1024px]:min-w-[0px] ${
+            className={`z-10 h-full w-fit max-[1024px]:min-w-[0px] ${
               isShowingAddCommunities ? "min-w-[380px]" : "min-w-[300px]"
             } ${width >= 1024 ? "flex" : sidebarToggled ? "flex" : "hidden"}`}
           >

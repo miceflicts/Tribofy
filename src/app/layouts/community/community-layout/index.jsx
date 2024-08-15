@@ -5,27 +5,17 @@ import CommunityHeader from "@/app/layouts/community/header";
 import LeftSideBar from "@/app/layouts/community/left-sidebar";
 import React, { useState, useEffect, useRef } from "react";
 
-import Courses from "@/app/layouts/community/community-pages/courses";
-
-export default function Community() {
+export default function CommunityLayout() {
   const { width, height } = useWindowDimensions();
   const [sidebarToggled, setSidebarToggled] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [isShowingAddCommunities, setIsShowingAddCommunities] = useState(true);
 
-  const [url, setUrl] = useState("");
-  const [lastUrlSegment, setLastUrlSegment] = useState("");
-
   const sidebarRef = useRef(null);
 
-  useEffect(() => {
-    setUrl(window.location.href);
-    setLastUrlSegment(window.location.href.split("/").pop());
-  }, []);
-
-  useEffect(() => {
-    console.log(lastUrlSegment);
-  }, [lastUrlSegment]);
+  const url = window.location.href;
+  const lastSegment = url.split("/").pop();
+  console.log(lastSegment);
 
   useEffect(() => {
     setIsMounted(true);
@@ -77,7 +67,7 @@ export default function Community() {
         <div className="mt-[50px] flex h-full w-full flex-row max-[1024px]:mt-[64px]">
           <div
             ref={sidebarRef}
-            className={`z-10 h-full w-fit max-[1024px]:min-w-[0px] ${
+            className={`z-20 h-full w-fit max-[1024px]:min-w-[0px] ${
               isShowingAddCommunities ? "min-w-[380px]" : "min-w-[300px]"
             } ${width >= 1024 ? "flex" : sidebarToggled ? "flex" : "hidden"}`}
           >
@@ -89,23 +79,7 @@ export default function Community() {
 
           <div
             className={`flex h-full w-full justify-between px-10 pt-10 max-[1260px]:px-2 max-[900px]:px-4 ${width <= 1024 && sidebarToggled ? "opacity-30" : ""}`}
-          >
-            {lastUrlSegment.length > 0 ? (
-              lastUrlSegment === "classroom" ? (
-                <>
-                  <Courses></Courses>
-                </>
-              ) : (
-                <></>
-              )
-            ) : (
-              <div className="w-full">
-                <h1 className="text-3xl font-bold text-primary-foreground">
-                  {lastUrlSegment}
-                </h1>
-              </div>
-            )}
-          </div>
+          ></div>
         </div>
       </div>
     </>
