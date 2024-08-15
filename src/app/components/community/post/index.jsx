@@ -9,15 +9,15 @@ export default function Post({ isPinned }) {
       <div className="flex min-h-fit w-[95%] flex-col">
         {/* Pinned post info */}
         <div
-          className={`${isPinned ? "flex" : "hidden"} h-[40px] w-full items-center gap-2 rounded-t-xl bg-accent px-8 text-highlighted-text`}
+          className={`${isPinned ? "flex" : "hidden"} h-[40px] w-full items-center gap-2 rounded-t-xl bg-primary px-8 text-highlighted-text`}
         >
-          <Pin size={20} className="rotate-45"></Pin>
-          <span className="text-[0.9rem] font-semibold">Pinned</span>
+          <Pin size={20} className="rotate-45 text-secondary"></Pin>
+          <span className="text-[0.9rem] font-bold text-secondary">Pinned</span>
         </div>
 
         {/* Post structure */}
         <div
-          className={`flex min-h-fit w-full flex-col gap-4 ${isPinned ? "rounded-t-none" : ""} rounded-xl border border-border bg-emphasis px-6 py-4`}
+          className={`flex min-h-fit w-full flex-col gap-4 ${isPinned ? "rounded-t-none" : ""} cursor-pointer rounded-xl border border-border bg-emphasis px-6 py-4 hover:bg-highlight/50`}
         >
           <div className="flex items-center gap-2">
             <div className="h-[45px] w-[45px] rounded-full bg-accent"></div>
