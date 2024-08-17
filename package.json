@@ -9,11 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@editorjs/editorjs": "^2.30.5",
     "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-hover-card": "^1.1.1",
     "@radix-ui/react-navigation-menu": "^1.2.0",
     "@radix-ui/react-progress": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
+    "@tiptap/extension-placeholder": "^2.6.4",
+    "@tiptap/extension-underline": "^2.6.4",
+    "@tiptap/pm": "^2.6.4",
+    "@tiptap/react": "^2.6.4",
+    "@tiptap/starter-kit": "^2.6.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.28",

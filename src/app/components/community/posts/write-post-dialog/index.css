@@ -1,0 +1,54 @@
+.tiptap-editor {
+  min-height: 100px;
+  width: 100%;
+  background-color: transparent;
+  font-size: 0.9rem;
+  font-weight: normal;
+  outline: none;
+}
+
+.tiptap-editor:focus {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+.ProseMirror {
+  min-height: 100px;
+  max-height: calc(80vh - 250px); /* Ajuste este valor conforme necessário */
+  overflow-y: auto;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  padding: 7px;
+}
+
+.tiptap p.is-editor-empty:first-child::before {
+  color: hsl(var(--highlighted-text));
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+.ProseMirror::-webkit-scrollbar {
+  width: 8px;
+}
+
+.ProseMirror::-webkit-scrollbar-track {
+  background: hsl(
+    var(--highlighted-text) / 0.1
+  ); /* Ajustado para usar a cor destacada com opacidade */
+}
+
+.ProseMirror::-webkit-scrollbar-thumb {
+  background: hsl(
+    var(--highlighted-text) / 0.5
+  ); /* Ajustado para usar a cor destacada com opacidade */
+  border-radius: 4px;
+}
+
+.ProseMirror::-webkit-scrollbar-thumb:hover {
+  background: hsl(
+    var(--highlighted-text) / 0.7
+  ); /* Ajustado para usar a cor destacada com opacidade */
+}
