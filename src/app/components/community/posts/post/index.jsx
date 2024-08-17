@@ -77,7 +77,7 @@ export default function Post({ isPinned }) {
               </div>
             </div>
 
-            <span className="text-link text-center text-[0.8rem] font-semibold max-[450px]:mt-3">
+            <span className="text-text-highlight text-center text-[0.8rem] font-semibold max-[450px]:mt-3">
               New comment 10 minutes ago
             </span>
           </div>
