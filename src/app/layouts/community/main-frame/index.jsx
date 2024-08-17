@@ -1,7 +1,7 @@
 import MainSectionBanner from "@/app/components/community/main-section/banner";
 import Filter from "@/app/components/community/main-section/filter";
-import Post from "@/app/components/community/post";
-import WritePost from "@/app/components/community/write-post";
+import Post from "@/app/components/community/posts/post";
+import WritePost from "@/app/components/community/posts/write-post";
 import React from "react";
 
 export default function MainFrame() {
@@ -11,7 +11,7 @@ export default function MainFrame() {
         <div className="flex h-fit w-full flex-col items-center justify-center gap-5">
           <MainSectionBanner></MainSectionBanner>
           <WritePost></WritePost>
-          <div className="mb-8 flex h-[50px] w-[95%] cursor-pointer items-center justify-start gap-4">
+          <div className="mb-2 mt-4 flex h-[50px] w-[95%] cursor-pointer items-center justify-start gap-4">
             <Filter text={"General"}></Filter>
             <Filter text={"General"}></Filter>
             <Filter text={"General"}></Filter>

@@ -6,7 +6,7 @@ export default function CommunitiesSections() {
     <>
       <div className="flex h-[300px] w-full flex-col">
         <div className="flex h-[70px] w-full cursor-pointer items-center justify-between border-b border-border px-5">
-          <h3 className="text-xl font-semibold">Tribofy</h3>
+          <h3 className="text-text-default text-xl font-semibold">Tribofy</h3>
 
           <ChevronDown
             size={19}

@@ -18,7 +18,7 @@ export default function ThemeToggleButton() {
   return (
     <div
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-      className="flex h-[35px] w-[35px] cursor-pointer items-center justify-center rounded-lg hover:bg-secondary"
+      className="flex h-[35px] w-[35px] cursor-pointer items-center justify-center rounded-lg hover:bg-highlight"
     >
       <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 text-foreground transition-all dark:-rotate-90 dark:scale-0" />
       <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 text-foreground transition-all dark:rotate-0 dark:scale-100" />

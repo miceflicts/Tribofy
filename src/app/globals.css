@@ -4,19 +4,45 @@
 
 @layer base {
   :root {
+    /* Cores base */
     --background: 0 0% 97%;
     --foreground: 0 0% 9%;
-    --emphasis: 0 0% 100%; /* #FFFFFF para o modo claro */
-    --highlight: 220 20% 96%; /* #f1f2f6 para o modo claro */
-    --highlighted-text: 214 6% 46%; /* #71767B para o modo claro */
+    --emphasis: 0 0% 100%;
+    --highlight: 220 20% 96%;
+    --highlighted-text: 214 6% 46%;
+
+    /* Componentes */
     --card: 0 0% 100%;
     --card-foreground: 0 0% 9%;
+    --card-hover: 220 20% 97%;
+    --card-shadow: 220 20% 70%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 9%;
+
+    /* Cores principais */
     --primary: 200 70% 50%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 200 10% 90%;
-    --secondary-foreground: 200 50% 20%;
+    --secondary: 150 30% 60%;
+    --secondary-foreground: 150 50% 20%;
+
+    --alt-purple: 270 50% 60%;
+    --alt-teal: 180 50% 50%;
+    --alt-coral: 10 70% 65%;
+
+    /* Cores de ação */
+    --button: 200 70% 50%;
+    --button-hover: 200 70% 45%;
+    --button-active: 200 70% 40%;
+    --button-text: 0 0% 100%;
+
+    /* Textos */
+    --text-default: 0 0% 9%;
+    --text-muted: 200 20% 40%;
+    --text-highlight: 200 70% 50%;
+    --link: 200 70% 50%;
+    --link-hover: 200 70% 40%;
+
+    /* Utilidades */
     --muted: 200 10% 90%;
     --muted-foreground: 200 20% 40%;
     --accent: 200 30% 80%;
@@ -26,23 +52,66 @@
     --border: 200 20% 85%;
     --input: 200 20% 85%;
     --ring: 200 70% 50%;
+
+    /* Interação */
+    --focus: 200 70% 50%;
+    --hover: 200 70% 45%;
+    --active: 200 70% 40%;
+
+    /* Outros */
+    --success: 120 70% 45%;
+    --warning: 40 70% 50%;
+    --info: 200 70% 50%;
+
+    /* Novas variáveis */
+    --shadow: 220 20% 30%;
+    --overlay: 0 0% 0%;
+    --tooltip: 220 20% 20%;
+    --tooltip-text: 0 0% 100%;
+    --badge: 25 95% 53%;
+    --badge-text: 0 0% 100%;
+    --code-block: 220 20% 96%;
+    --code-inline: 200 10% 90%;
+    --scrollbar-thumb: 200 20% 80%;
+    --scrollbar-track: 200 20% 90%;
+
     --radius: 0.5rem;
   }
 
   .dark {
     --background: 0 0% 9%;
     --foreground: 0 0% 95%;
-    --emphasis: 0 0% 11%; /* #1C1C1C para o modo escuro */
-    --highlight: 0 0% 17%; /* #2c2c2c para o modo escuro */
-    --highlighted-text: 214 10% 70%; /* Um tom claro que contrasta com o highlight */
+    --emphasis: 0 0% 11%;
+    --highlight: 0 0% 17%;
+    --highlighted-text: 214 10% 70%;
+
     --card: 0 0% 11%;
     --card-foreground: 0 0% 95%;
+    --card-hover: 0 0% 13%;
+    --card-shadow: 0 0% 0%;
     --popover: 0 0% 11%;
     --popover-foreground: 0 0% 95%;
+
     --primary: 200 70% 50%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 200 15% 20%;
-    --secondary-foreground: 0 0% 95%;
+    --secondary: 150 30% 40%;
+    --secondary-foreground: 150 40% 90%;
+
+    --alt-purple: 270 50% 50%;
+    --alt-teal: 180 50% 40%;
+    --alt-coral: 10 70% 55%;
+
+    --button: 200 70% 50%;
+    --button-hover: 200 70% 55%;
+    --button-active: 200 70% 60%;
+    --button-text: 0 0% 100%;
+
+    --text-default: 0 0% 95%;
+    --text-muted: 200 20% 70%;
+    --text-highlight: 200 70% 60%;
+    --link: 200 70% 60%;
+    --link-hover: 200 70% 70%;
+
     --muted: 200 15% 20%;
     --muted-foreground: 200 20% 70%;
     --accent: 200 30% 30%;
@@ -52,6 +121,25 @@
     --border: 200 20% 20%;
     --input: 200 20% 20%;
     --ring: 200 70% 50%;
+
+    --focus: 200 70% 60%;
+    --hover: 200 70% 55%;
+    --active: 200 70% 50%;
+
+    --success: 120 70% 40%;
+    --warning: 40 70% 45%;
+    --info: 200 70% 55%;
+
+    --shadow: 0 0% 0%;
+    --overlay: 0 0% 100%;
+    --tooltip: 220 20% 80%;
+    --tooltip-text: 0 0% 0%;
+    --badge: 25 95% 53%;
+    --badge-text: 0 0% 100%;
+    --code-block: 0 0% 15%;
+    --code-inline: 200 15% 20%;
+    --scrollbar-thumb: 200 20% 40%;
+    --scrollbar-track: 200 20% 20%;
   }
 }
 

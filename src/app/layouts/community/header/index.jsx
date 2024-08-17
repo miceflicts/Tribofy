@@ -17,7 +17,7 @@ export default function CommunityHeader({ toggleSidebar, sidebarToggled }) {
     <header className="fixed z-10 flex w-full">
       <div className="flex h-full min-h-[50px] w-full items-center justify-between border-b border-border bg-emphasis pl-6 pr-6 max-[1024px]:min-h-[64px]">
         {/* Keyboard shortcuts / hamburger div */}
-        <div className="flex h-[35px] w-[35px] cursor-pointer items-center justify-center rounded-lg hover:bg-secondary max-[1024px]:h-[45px] max-[1024px]:w-[45px]">
+        <div className="flex h-[35px] w-[35px] cursor-pointer items-center justify-center rounded-lg hover:bg-highlight max-[1024px]:h-[45px] max-[1024px]:w-[45px]">
           <Command className="text-foreground max-[1024px]:hidden" size={19} />
           {sidebarToggled ? (
             <X
@@ -55,12 +55,12 @@ export default function CommunityHeader({ toggleSidebar, sidebarToggled }) {
           <div className="flex items-center max-[1024px]:hidden">
             <ThemeToggleButton />
 
-            <div className="flex h-[35px] w-[35px] cursor-pointer items-center justify-center rounded-lg hover:bg-secondary">
+            <div className="flex h-[35px] w-[35px] cursor-pointer items-center justify-center rounded-lg hover:bg-highlight">
               <MessageCircleMore className="text-foreground" size={19} />
               <span className="sr-only">See your messages</span>
             </div>
 
-            <div className="flex h-[35px] w-[35px] cursor-pointer items-center justify-center rounded-lg hover:bg-secondary">
+            <div className="flex h-[35px] w-[35px] cursor-pointer items-center justify-center rounded-lg hover:bg-highlight">
               <Bell className="text-foreground" size={19} />
               <span className="sr-only">See your notifications</span>
             </div>

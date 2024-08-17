@@ -26,6 +26,39 @@ module.exports = {
         emphasis: "hsl(var(--emphasis))",
         highlight: "hsl(var(--highlight))",
         "highlighted-text": "hsl(var(--highlighted-text))",
+        button: "hsl(var(--button))",
+        "button-hover": "hsl(var(--button-hover))",
+        "button-active": "hsl(var(--button-active))",
+        "button-text": "hsl(var(--button-text))",
+
+        "text-default": "hsl(var(--text-default))",
+        "text-muted": "hsl(var(--text-muted))",
+        "text-highlight": "hsl(var(--text-highlight))",
+        link: "hsl(var(--link))",
+        "link-hover": "hsl(var(--link-hover))",
+
+        focus: "hsl(var(--focus))",
+        hover: "hsl(var(--hover))",
+        active: "hsl(var(--active))",
+        overlay: "hsl(var(--overlay))",
+
+        tooltip: "hsl(var(--tooltip))",
+        "tooltip-text": "hsl(var(--tooltip-text))",
+        badge: "hsl(var(--badge))",
+        "badge-text": "hsl(var(--badge-text))",
+        codeBlock: "hsl(var(--code-block))",
+        codeInline: "hsl(var(--code-inline))",
+        scrollbarThumb: "hsl(var(--scrollbar-thumb))",
+        scrollbarTrack: "hsl(var(--scrollbar-track))",
+
+        "alt-purple": "hsl(var(--alt-purple))",
+        "alt-teal": "hsl(var(--alt-teal))",
+        "alt-coral": "hsl(var(--alt-coral))",
+
+        shadow: "hsl(var(--shadow))",
+
+        radius: "var(--radius)",
+
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -52,6 +85,8 @@ module.exports = {
         },
         card: {
           DEFAULT: "hsl(var(--card))",
+          hover: "hsl(var(--card-hover))",
+          shadow: "hsl(var(--card-shadow))",
           foreground: "hsl(var(--card-foreground))",
         },
       },

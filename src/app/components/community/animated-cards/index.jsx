@@ -104,7 +104,7 @@ export default function AnimatedCards() {
                     exit={{ opacity: 0 }}
                     href={active.ctaLink}
                     target="_blank"
-                    className="rounded-full bg-primary px-8 py-3 text-sm font-bold text-white hover:bg-primary/80"
+                    className="hover:bg-button-hover active:to-button-active bg-button rounded-full px-8 py-3 text-sm font-bold text-white"
                   >
                     {active.ctaText}
                   </motion.a>
@@ -115,7 +115,7 @@ export default function AnimatedCards() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="flex h-40 flex-col items-start gap-4 overflow-auto pb-10 text-xs text-neutral-600 [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch] [mask:linear-gradient(to_bottom,white,white,transparent)] [scrollbar-width:none] dark:text-neutral-400 md:h-fit md:text-sm lg:text-base"
+                    className="flex h-40 flex-col items-start gap-4 overflow-auto pb-10 text-xs text-highlighted-text [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch] [mask:linear-gradient(to_bottom,white,white,transparent)] [scrollbar-width:none] md:h-fit md:text-sm lg:text-base"
                   >
                     {typeof active.content === "function"
                       ? active.content()
@@ -134,7 +134,7 @@ export default function AnimatedCards() {
             layoutId={`card-${card.title}-${id}`}
             key={card.title}
             onClick={() => setActive(card)}
-            className="flex cursor-pointer flex-col rounded-xl border border-border bg-emphasis hover:bg-accent/40 dark:hover:bg-accent/10"
+            className="hover:bg-card-hover flex cursor-pointer flex-col rounded-xl border border-border bg-card"
           >
             <div className="flex w-full flex-col gap-4">
               <motion.div layoutId={`image-${card.title}-${id}`}>
