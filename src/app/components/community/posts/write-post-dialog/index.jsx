@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   Dialog,
   DialogContent,
@@ -22,6 +22,12 @@ import "./index.css";
 
 export default function WritePostDialog(props) {
   const [title, setTitle] = useState("");
+  const [editorContent, setEditorContent] = useState("");
+  const [activeStyles, setActiveStyles] = useState({
+    bold: false,
+    italic: false,
+    underline: false,
+  });
 
   const editor = useEditor({
     extensions: [
@@ -32,6 +38,10 @@ export default function WritePostDialog(props) {
       }),
     ],
     content: "",
+    onUpdate({ editor }) {
+      setEditorContent(editor.getHTML());
+      updateActiveStyles(editor);
+    },
     editorProps: {
       attributes: {
         class:
@@ -40,20 +50,41 @@ export default function WritePostDialog(props) {
     },
   });
 
+  const updateActiveStyles = useCallback((editor) => {
+    if (editor) {
+      setActiveStyles({
+        bold: editor.isActive("bold"),
+        italic: editor.isActive("italic"),
+        underline: editor.isActive("underline"),
+      });
+    }
+  }, []);
+
+  useEffect(() => {
+    if (editor) {
+      editor.on("selectionUpdate", () => updateActiveStyles(editor));
+      editor.on("focus", () => updateActiveStyles(editor));
+    }
+  }, [editor, updateActiveStyles]);
+
   const handleApplyFormatting = (type) => {
     if (!editor) return;
 
-    switch (type) {
-      case "bold":
-        editor.chain().focus().toggleBold().run();
-        break;
-      case "italic":
-        editor.chain().focus().toggleItalic().run();
-        break;
-      case "underline":
-        editor.chain().focus().toggleUnderline().run();
-        break;
-      // Adicione mais casos conforme necessário
+    try {
+      switch (type) {
+        case "bold":
+          editor.chain().focus().toggleBold().run();
+          break;
+        case "italic":
+          editor.chain().focus().toggleItalic().run();
+          break;
+        case "underline":
+          editor.chain().focus().toggleUnderline().run();
+          break;
+      }
+      updateActiveStyles(editor);
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -92,9 +123,12 @@ export default function WritePostDialog(props) {
         </div>
 
         <div className="mt-5 flex h-fit w-full flex-col justify-between gap-2">
-          <WritePostTools applyFormatting={handleApplyFormatting} />
+          <WritePostTools
+            applyFormatting={handleApplyFormatting}
+            activeStyles={activeStyles}
+          />
 
-          <div className="h-[1px] w-full rounded-lg bg-border"></div>
+          <div className="max-h-[1px] min-h-[1px] min-w-full rounded-lg bg-border"></div>
 
           <div className="mt-4 flex h-fit w-full justify-between">
             <div>
