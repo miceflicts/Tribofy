@@ -18,16 +18,29 @@ import Underline from "@tiptap/extension-underline";
 import StarterKit from "@tiptap/starter-kit";
 import Placeholder from "@tiptap/extension-placeholder";
 
+import { postService } from "@/app/services/api";
+
 import "./index.css";
 
 export default function WritePostDialog(props) {
   const [title, setTitle] = useState("");
   const [editorContent, setEditorContent] = useState("");
+  const [isPublishing, setIsPublishing] = useState(false);
   const [activeStyles, setActiveStyles] = useState({
     bold: false,
     italic: false,
     underline: false,
   });
+
+  const updateActiveStyles = useCallback((editor) => {
+    if (editor) {
+      setActiveStyles({
+        bold: editor.isActive("bold"),
+        italic: editor.isActive("italic"),
+        underline: editor.isActive("underline"),
+      });
+    }
+  }, []);
 
   const editor = useEditor({
     extensions: [
@@ -50,15 +63,42 @@ export default function WritePostDialog(props) {
     },
   });
 
-  const updateActiveStyles = useCallback((editor) => {
-    if (editor) {
-      setActiveStyles({
-        bold: editor.isActive("bold"),
-        italic: editor.isActive("italic"),
-        underline: editor.isActive("underline"),
-      });
+  const handlePostPublish = useCallback(async () => {
+    const trimmedText = editor
+      ?.getHTML()
+      .replace(/<[^>]+>/g, "")
+      .trim();
+
+    if (!title || trimmedText === "") {
+      alert("Please enter a title and write a post.");
+      return;
     }
-  }, []);
+
+    if (title.length < 3 || title.length > 200) {
+      alert("The title must be between 3 and 200 characters.");
+      return;
+    }
+
+    setIsPublishing(true);
+    try {
+      const postData = {
+        title,
+        content: editor.getHTML(),
+        author: "66be890f0e5c076022ebad05",
+        community: "66bfd4e3fae5eb91e7833c62",
+        category: "66bfdef9baede5830f08e74d",
+      };
+      await postService.createPost(postData);
+      alert("Post published successfully!");
+      setTitle("");
+      editor.commands.setContent("");
+    } catch (error) {
+      alert("An error occurred while publishing the post. Please try again.");
+      console.error(error);
+    } finally {
+      setIsPublishing(false);
+    }
+  }, [title, editor]);
 
   useEffect(() => {
     if (editor) {
@@ -131,16 +171,18 @@ export default function WritePostDialog(props) {
           <div className="max-h-[1px] min-h-[1px] min-w-full rounded-lg bg-border"></div>
 
           <div className="mt-4 flex h-fit w-full justify-between">
-            <div>
-              <Button></Button>
-            </div>
+            <Button className="flex gap-3 bg-button hover:bg-button-hover active:bg-button-active">
+              <SendHorizonal size={20} className="text-button-text" />
+            </Button>
 
-            <div className="flex gap-3">
-              <Button className="flex gap-3 bg-button hover:bg-button-hover active:bg-button-active">
-                <span>Publish</span>
-                <SendHorizonal size={20} className="text-button-text" />
-              </Button>
-            </div>
+            <Button
+              className="flex gap-3 bg-button hover:bg-button-hover active:bg-button-active"
+              onClick={handlePostPublish}
+              disabled={isPublishing}
+            >
+              <span>{isPublishing ? "Publicando..." : "Publicar"}</span>
+              <SendHorizonal size={20} className="text-button-text" />
+            </Button>
           </div>
         </div>
       </DialogContent>

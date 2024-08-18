@@ -15,10 +15,10 @@ import ThemeToggleButton from "@/app/components/general/theme-toggle-button";
 export default function CommunityHeader({ toggleSidebar, sidebarToggled }) {
   return (
     <header className="fixed z-10 flex w-full">
-      <div className="flex h-full min-h-[50px] w-full items-center justify-between border-b border-border bg-emphasis pl-6 pr-6 max-[1024px]:min-h-[64px]">
+      <div className="flex h-full min-h-[50px] w-full items-center justify-between border-b border-border bg-emphasis pl-6 pr-6 max-lg:min-h-[64px]">
         {/* Keyboard shortcuts / hamburger div */}
-        <div className="flex h-[35px] w-[35px] cursor-pointer items-center justify-center rounded-lg hover:bg-highlight max-[1024px]:h-[45px] max-[1024px]:w-[45px]">
-          <Command className="text-foreground max-[1024px]:hidden" size={19} />
+        <div className="flex h-[35px] w-[35px] cursor-pointer items-center justify-center rounded-lg hover:bg-highlight max-lg:h-[45px] max-lg:w-[45px]">
+          <Command className="text-foreground max-lg:hidden" size={19} />
           {sidebarToggled ? (
             <X
               className="h-[30px] w-[30px] text-foreground min-[1024px]:hidden"
@@ -33,7 +33,7 @@ export default function CommunityHeader({ toggleSidebar, sidebarToggled }) {
         </div>
 
         {/* Search div */}
-        <div className="relative max-[1024px]:hidden">
+        <div className="relative max-lg:hidden">
           <Search
             className="absolute left-[0.8rem] top-1/2 z-10 -translate-y-1/2 transform text-foreground"
             size={18}
@@ -52,7 +52,7 @@ export default function CommunityHeader({ toggleSidebar, sidebarToggled }) {
 
         {/* Right items on big screen */}
         <div className="flex items-center gap-6">
-          <div className="flex items-center max-[1024px]:hidden">
+          <div className="flex items-center max-lg:hidden">
             <ThemeToggleButton />
 
             <div className="flex h-[35px] w-[35px] cursor-pointer items-center justify-center rounded-lg hover:bg-highlight">

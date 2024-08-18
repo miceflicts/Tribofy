@@ -12,7 +12,7 @@ export default function WritePost() {
     <>
       <Dialog>
         <DialogTrigger
-          className="hover:bg-card-hover flex h-[80px] w-[95%] cursor-pointer items-center justify-start gap-4 rounded-xl border border-border bg-card px-6"
+          className="flex h-[80px] w-[95%] cursor-pointer items-center justify-start gap-4 rounded-xl border border-border bg-card px-6 hover:bg-card-hover"
           onClick={() => setOpen(!open)}
         >
           <div className="h-[45px] w-[45px] rounded-full bg-accent"></div>
