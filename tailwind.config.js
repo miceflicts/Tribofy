@@ -32,6 +32,7 @@ module.exports = {
         "button-text": "hsl(var(--button-text))",
 
         "text-default": "hsl(var(--text-default))",
+        "text-gray": "hsl(var(--text-gray))",
         "text-muted": "hsl(var(--text-muted))",
         "text-highlight": "hsl(var(--text-highlight))",
         link: "hsl(var(--link))",
@@ -54,6 +55,11 @@ module.exports = {
         "alt-purple": "hsl(var(--alt-purple))",
         "alt-teal": "hsl(var(--alt-teal))",
         "alt-coral": "hsl(var(--alt-coral))",
+
+        "element-active": "hsl(var(--element-active))",
+        "element-inactive": "hsl(var(--element-inactive))",
+        "element-disabled": "hsl(var(--element-disabled))",
+        "element-disabled-text": "hsl(var(--element-disabled-text))",
 
         shadow: "hsl(var(--shadow))",
 

@@ -11,19 +11,21 @@ export default function Post({ isPinned }) {
         <div
           className={`${isPinned ? "flex" : "hidden"} h-[40px] w-full items-center gap-2 rounded-t-xl bg-primary px-8`}
         >
-          <Pin size={20} className="rotate-45 text-highlight"></Pin>
-          <span className="text-[0.9rem] font-bold text-highlight">Pinned</span>
+          <Pin size={20} className="rotate-45 text-primary-foreground"></Pin>
+          <span className="text-[0.9rem] font-bold text-primary-foreground">
+            Pinned
+          </span>
         </div>
 
         {/* Post structure */}
         <div
-          className={`flex min-h-fit w-full flex-col gap-4 ${isPinned ? "rounded-t-none" : ""} hover:bg-card-hover cursor-pointer rounded-xl border border-border bg-card px-6 py-4`}
+          className={`flex min-h-fit w-full flex-col gap-4 ${isPinned ? "rounded-t-none" : ""} cursor-pointer rounded-xl border border-border bg-card px-6 py-4 hover:bg-card-hover`}
         >
           <div className="flex items-center gap-2">
             <div className="h-[45px] w-[45px] rounded-full bg-accent"></div>
 
             <div className="flex flex-col">
-              <h4 className="text-text-default text-[0.9rem] font-semibold">
+              <h4 className="text-[0.9rem] font-semibold text-text-default">
                 Nicolas
               </h4>
               <span className="text-sm text-highlighted-text">
@@ -34,7 +36,7 @@ export default function Post({ isPinned }) {
 
           {/* Text preview */}
           <div className="flex h-fit w-full flex-col gap-2">
-            <h3 className="breakOneLine text-text-default text-[1.2rem] font-bold">
+            <h3 className="breakOneLine text-[1.2rem] font-bold text-text-default">
               Guys under 18 years old ask for advice on this post. Guys over 18
               years old, sdsdsad dsadasd dasdsa aaaa sadsad
             </h3>
@@ -77,7 +79,7 @@ export default function Post({ isPinned }) {
               </div>
             </div>
 
-            <span className="text-text-highlight text-center text-[0.8rem] font-semibold max-[450px]:mt-3">
+            <span className="text-center text-[0.8rem] font-semibold text-text-highlight max-[450px]:mt-3">
               New comment 10 minutes ago
             </span>
           </div>

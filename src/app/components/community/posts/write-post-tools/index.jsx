@@ -13,7 +13,7 @@ import {
 
 const WritePostTools = memo(({ applyFormatting, activeStyles }) => {
   const getButtonClass = (isActive) =>
-    `flex max-[420px]:h-[30px] max-[420px]:w-[30px] h-[35px] w-[35px] cursor-pointer items-center justify-center rounded-lg hover:bg-highlight ${
+    `flex max-[420px]:h-[30px] max-[420px]:w-[30px] h-[35px] w-[35px] cursor-pointer items-center justify-center rounded-lg hover:bg-card-hover ${
       isActive ? "bg-highlight" : "bg-transparent"
     }`;
 
