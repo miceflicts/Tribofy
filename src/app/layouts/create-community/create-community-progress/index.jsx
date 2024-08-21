@@ -15,9 +15,9 @@ export default function CreateCommunityProgress() {
             <div className="min-h-[50px] max-w-[0.5px] rounded-lg border border-border"></div>
           </div>
           <div className="flex flex-col text-sm font-medium">
-            <h4 className="text-text-default">Basic details</h4>
+            <h4 className="text-text-default">Welcome Aboard!</h4>
             <span className="text-highlighted-text">
-              Learn more about tribofy communities
+              Get started with your Tribofy community
             </span>
           </div>
         </div>
@@ -30,10 +30,8 @@ export default function CreateCommunityProgress() {
             <div className="min-h-[50px] max-w-[0.5px] rounded-lg border border-border"></div>
           </div>
           <div className="flex flex-col text-sm font-medium">
-            <h4 className="text-text-default">Basic details</h4>
-            <span className="text-highlighted-text">
-              Learn more about tribofy communities
-            </span>
+            <h4 className="text-text-default">Community Details</h4>
+            <span className="text-highlighted-text">Add your touch</span>
           </div>
         </div>
 
@@ -44,9 +42,9 @@ export default function CreateCommunityProgress() {
             </div>
           </div>
           <div className="flex flex-col text-sm font-medium">
-            <h4 className="text-text-default">Basic details</h4>
+            <h4 className="text-text-default">Select a Plan</h4>
             <span className="text-highlighted-text">
-              Learn more about tribofy communities
+              With a 30 days free trial
             </span>
           </div>
         </div>

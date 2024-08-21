@@ -2,7 +2,7 @@ import CompanyLogo from "@/app/components/general/company-logo";
 import React from "react";
 import CreateCommunityProgress from "../create-community-progress";
 
-export default function CreateCommunityLeftSidebar() {
+export default function CreateCommunityLeftSidebar({ activeStep }) {
   return (
     <>
       <div className="ml-2 flex h-[98vh] w-[450px] flex-col gap-20 rounded-2xl border border-border bg-emphasis p-10">
@@ -12,7 +12,9 @@ export default function CreateCommunityLeftSidebar() {
           color="text-gray-500 dark:text-gray-300"
         />
 
-        <CreateCommunityProgress></CreateCommunityProgress>
+        <CreateCommunityProgress
+          activeStep={activeStep}
+        ></CreateCommunityProgress>
       </div>
     </>
   );

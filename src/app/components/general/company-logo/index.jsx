@@ -1,7 +1,7 @@
 import React from "react";
 import { Tent } from "lucide-react";
 
-export default function CompanyLogo({ svgSize, textSize, color }) {
+export default function CompanyLogo({ svgSize, textSize, color, noText }) {
   return (
     <>
       <div
@@ -12,7 +12,9 @@ export default function CompanyLogo({ svgSize, textSize, color }) {
           strokeWidth={2}
           className={`${color !== undefined ? color : "text-gray-800"}`}
         ></Tent>
-        <h1>Tribofy</h1>
+        <h1 className={`${noText !== undefined && noText ? "hidden" : ""}`}>
+          Tribofy
+        </h1>
       </div>
     </>
   );

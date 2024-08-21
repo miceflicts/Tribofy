@@ -46,7 +46,7 @@
     /* Utilidades */
     --muted: 200 15% 90%;
     --muted-foreground: 200 20% 40%;
-    --accent: 160 65% 45%;
+    --accent: 0 0% 90%;
     --accent-foreground: 160 100% 95%;
     --destructive: 0 70% 50%;
     --destructive-foreground: 0 0% 100%;
@@ -78,7 +78,7 @@
 
     /* Elementos ativados e desativados */
     --element-active: 200 70% 50%;
-    --element-inactive: 200 15% 75%;
+    --element-inactive: 252 10% 90%;
     --element-disabled: 200 10% 90%;
     --element-disabled-text: 200 10% 60%;
 
@@ -86,7 +86,7 @@
   }
 
   .dark {
-    --background: 0 0% 9%;
+    --background: 0 0% 8.6%; /* antes 9% */
     --foreground: 0 0% 95%;
     --emphasis: 0 0% 11%;
     --highlight: 0 0% 17%;
@@ -122,11 +122,11 @@
 
     --muted: 200 15% 25%;
     --muted-foreground: 200 20% 70%;
-    --accent: 160 65% 40%;
+    --accent: 0 0% 40%;
     --accent-foreground: 160 100% 95%;
     --destructive: 0 70% 50%;
     --destructive-foreground: 0 0% 100%;
-    --border: 200 20% 20%;
+    --border: 0 0 14.1%; /* --border: 200 20% 20%; */
     --input: 200 20% 20%;
     --ring: 200 70% 50%;
 
@@ -151,7 +151,7 @@
 
     /* Elementos ativados e desativados */
     --element-active: 200 70% 50%;
-    --element-inactive: 200 15% 35%;
+    --element-inactive: 0 0% 17%;
     --element-disabled: 200 10% 20%;
     --element-disabled-text: 200 10% 50%;
   }
