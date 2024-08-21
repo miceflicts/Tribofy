@@ -1,6 +1,6 @@
 import CompanyLogo from "@/app/components/general/company-logo";
 import React from "react";
-import CreateCommunityProgress from "../create-community-progress";
+import CreateCommunityProgress from "../progress";
 
 export default function CreateCommunityLeftSidebar({ activeStep }) {
   return (

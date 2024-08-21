@@ -131,7 +131,7 @@ export default function CommunityDetailsPage() {
           <textarea
             onChange={handleCommunityDescriptionChange}
             placeholder="Describe your community"
-            className={`flex h-10 w-full resize-none overflow-hidden rounded-md border border-border bg-background px-3 py-5 text-sm font-medium text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-0 ${
+            className={`flex min-h-10 w-full resize-none overflow-hidden rounded-md border border-border bg-background px-3 py-5 text-sm font-medium text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-0 ${
               communityDescription.length > 500
                 ? "border-destructive text-destructive"
                 : ""

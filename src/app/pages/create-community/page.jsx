@@ -1,6 +1,6 @@
-import CreateCommunityBottomProgress from "@/app/layouts/create-community/create-community-bottom-progress";
-import CreateCommunityLeftSidebar from "@/app/layouts/create-community/create-community-left-sidebar";
-import CreateCommunityMainFrame from "@/app/layouts/create-community/create-community-main-frame";
+import CreateCommunityBottomProgress from "@/app/layouts/create-community/bottom-progress";
+import CreateCommunityLeftSidebar from "@/app/layouts/create-community/left-sidebar";
+import CreateCommunityMainFrame from "@/app/layouts/create-community/main-frame";
 import React from "react";
 
 export default function CreateCommunity() {
