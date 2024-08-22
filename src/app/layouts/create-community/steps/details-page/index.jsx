@@ -6,7 +6,7 @@ import CompanyLogo from "@/app/components/general/company-logo";
 import { Input } from "@/components/ui/input";
 import useAutosizeTextArea from "@/app/hooks/use-autosize-text-area";
 
-export default function CommunityDetailsPage() {
+export default function CommunityDetailsPage({ onFormSubmit }) {
   const [communityTitle, setCommunityTitle] = useState("");
   const [communityDescription, setCommunityDescriptionValue] = useState("");
   const [communitySlug, setCommunitySlug] = useState("");
@@ -65,6 +65,8 @@ export default function CommunityDetailsPage() {
       communityDescription,
       communitySlug,
     });
+
+    onFormSubmit({ communityTitle, communityDescription, communitySlug });
   };
 
   useEffect(() => {

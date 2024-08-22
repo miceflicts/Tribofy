@@ -12,11 +12,11 @@ export default function CreateCommunity() {
 
       <div className="flex h-full w-full flex-col">
         <div className="mb-20 flex flex-1 items-center justify-center">
-          <CreateCommunityMainFrame activeStep={2} />
+          <CreateCommunityMainFrame activeStep={3} />
         </div>
 
         <div className="mb-10 flex w-full items-center justify-center">
-          <CreateCommunityBottomProgress activeStep={2} />
+          <CreateCommunityBottomProgress activeStep={3} />
         </div>
       </div>
     </div>
