@@ -15,10 +15,11 @@ export default function CommunityDetailsPricing(props) {
 
           <div className="flex w-fit flex-col items-center gap-1">
             <h1 className="text-3xl font-semibold text-text-default">
-              Welcome to Tribofy!
+              Choose Your Plan, No Strings Attached
             </h1>
             <h3 className="font-normal text-highlighted-text">
-              Get up and running in 3 minutes.
+              Pick the perfect plan for your needs — 30 days free, no credit
+              card required.
             </h3>
           </div>
         </div>

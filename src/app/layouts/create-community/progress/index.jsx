@@ -28,7 +28,7 @@ export default function CreateCommunityProgress({ activeStep }) {
               Welcome Aboard!
             </h4>
             <span
-              className={`text-highlighted-text ${activeStep === 1 ? "opacity-100" : "opacity-50"}}`}
+              className={`text-highlighted-text ${activeStep === 1 ? "opacity-100" : "opacity-50"}`}
             >
               Get started with your Tribofy community
             </span>

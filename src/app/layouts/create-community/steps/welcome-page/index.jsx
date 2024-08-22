@@ -2,7 +2,7 @@ import React from "react";
 import CompanyLogo from "@/app/components/general/company-logo";
 import { Button } from "@/components/ui/button";
 
-export default function CommunityWelcomePage() {
+export default function CommunityWelcomePage({ onNextButtonClick }) {
   return (
     <>
       <div className="flex h-fit w-full flex-col items-center justify-center gap-3">
@@ -24,7 +24,10 @@ export default function CommunityWelcomePage() {
 
       <div className="aspect-video w-[600px] rounded-xl bg-accent"></div>
 
-      <Button className="w-[60%] bg-button py-6 text-button-text hover:bg-button-hover active:bg-button-active">
+      <Button
+        className="w-[60%] bg-button py-6 text-button-text hover:bg-button-hover active:bg-button-active"
+        onClick={onNextButtonClick}
+      >
         Get Started Now
       </Button>
     </>
