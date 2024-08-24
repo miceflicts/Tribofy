@@ -12,4 +12,13 @@ export const communityService = {
       throw error;
     }
   },
+
+  createCommunity: async (communityData) => {
+    try {
+      const response = await api.post("/communities/create", communityData);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
 };

@@ -17,20 +17,6 @@ export default function CreateCommunity() {
     setActiveStep(activeStep + 1);
   };
 
-  const handleOnGetCommunityDetails = (data) => {
-    try {
-      setCommunityDetails({
-        name: data.communityTitle,
-        description: data.communityDescription,
-        slug: data.communitySlug,
-      });
-
-      handleClickedNextButton();
-    } catch (error) {
-      console.error("Error: updating the community details", error);
-    }
-  };
-
   return (
     <div className="min-w-screen flex h-screen">
       <div className="flex h-full w-fit items-center justify-center">
@@ -42,7 +28,6 @@ export default function CreateCommunity() {
           <CreateCommunityMainFrame
             activeStep={activeStep}
             clickedWelcomePageNextButton={handleClickedNextButton}
-            onGetCommunityDetails={handleOnGetCommunityDetails}
             onChoosenPricing={handleClickedNextButton}
           />
         </div>

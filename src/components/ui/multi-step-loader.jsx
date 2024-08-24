@@ -35,43 +35,54 @@ const CheckFilled = ({ className }) => {
   );
 };
 
-const LoaderCore = ({ loadingStates, value = 0 }) => {
+const LoaderCore = ({ loadingStates, value = 0, onComplete }) => {
   return (
     <div className="relative mx-auto mt-40 flex max-w-xl flex-col justify-start">
       {loadingStates.map((loadingState, index) => {
         const distance = Math.abs(index - value);
-        const opacity = Math.max(1 - distance * 0.2, 0); // Minimum opacity is 0, keep it 0.2 if you're sane.
+        const opacity = Math.max(1 - distance * 0.2, 0);
 
         return (
           <motion.div
             key={index}
-            className={cn("mb-4 flex gap-2 text-left")}
+            className={cn("mb-4 flex flex-col gap-2 text-left")}
             initial={{ opacity: 0, y: -(value * 40) }}
             animate={{ opacity: opacity, y: -(value * 40) }}
             transition={{ duration: 0.5 }}
           >
-            <div>
-              {index > value && (
-                <CheckIcon className="text-black dark:text-white" />
-              )}
-              {index <= value && (
-                <CheckFilled
-                  className={cn(
-                    "text-black dark:text-white",
-                    value === index &&
-                      "text-black opacity-100 dark:text-lime-500",
-                  )}
-                />
-              )}
+            <div className="mb-4 flex gap-2 text-left">
+              <div>
+                {index > value && (
+                  <CheckIcon className="text-black dark:text-white" />
+                )}
+                {index <= value && (
+                  <CheckFilled
+                    className={cn(
+                      "text-black dark:text-white",
+                      value === index &&
+                        "text-black opacity-100 dark:text-primary",
+                    )}
+                  />
+                )}
+              </div>
+              <span
+                className={cn(
+                  "text-black dark:text-white",
+                  value === index &&
+                    "text-white opacity-100 dark:text-text-highlight",
+                )}
+              >
+                {loadingState.text}
+              </span>
             </div>
-            <span
-              className={cn(
-                "text-black dark:text-white",
-                value === index && "text-black opacity-100 dark:text-lime-500",
-              )}
-            >
-              {loadingState.text}
-            </span>
+            {index === loadingStates.length - 1 && value === index && (
+              <button
+                onClick={onComplete}
+                className="ml-2 mt-2 cursor-pointer rounded bg-button px-4 py-2 text-white hover:bg-blue-600 hover:bg-button-hover active:bg-button-active"
+              >
+                Going to Dashboard
+              </button>
+            )}
           </motion.div>
         );
       })}
@@ -84,6 +95,7 @@ export const MultiStepLoader = ({
   loading,
   duration = 2000,
   loop = true,
+  onComplete,
 }) => {
   const [currentState, setCurrentState] = useState(0);
 
@@ -104,6 +116,7 @@ export const MultiStepLoader = ({
 
     return () => clearTimeout(timeout);
   }, [currentState, loading, loop, loadingStates.length, duration]);
+
   return (
     <AnimatePresence mode="wait">
       {loading && (
@@ -120,7 +133,11 @@ export const MultiStepLoader = ({
           className="fixed inset-0 z-[100] flex h-full w-full items-center justify-center backdrop-blur-2xl"
         >
           <div className="relative h-96">
-            <LoaderCore value={currentState} loadingStates={loadingStates} />
+            <LoaderCore
+              value={currentState}
+              loadingStates={loadingStates}
+              onComplete={onComplete}
+            />
           </div>
 
           <div className="absolute inset-x-0 bottom-0 z-20 h-full bg-white bg-gradient-to-t [mask-image:radial-gradient(900px_at_center,transparent_30%,white)] dark:bg-black" />
