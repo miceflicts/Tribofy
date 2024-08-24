@@ -3,15 +3,10 @@
 import CreateCommunityBottomProgress from "@/app/layouts/create-community/bottom-progress";
 import CreateCommunityLeftSidebar from "@/app/layouts/create-community/left-sidebar";
 import CreateCommunityMainFrame from "@/app/layouts/create-community/main-frame";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 export default function CreateCommunity() {
   const [activeStep, setActiveStep] = useState(1);
-  const [communityDetails, setCommunityDetails] = useState({
-    name: "",
-    description: "",
-    slug: "",
-  });
 
   const handleClickedNextButton = () => {
     setActiveStep(activeStep + 1);

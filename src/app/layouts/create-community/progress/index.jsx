@@ -10,7 +10,7 @@ export default function CreateCommunityProgress({ activeStep }) {
         <div className="flex h-fit w-fit gap-4">
           <div className="flex flex-col items-center justify-center">
             <div
-              className={`flex h-[45px] w-[45px] items-center justify-center rounded-lg border ${activeStep === 1 ? "border-highlight" : "border-border"} ${activeStep === 1 ? "opacity-100" : "opacity-50"} `}
+              className={`flex h-[45px] w-[45px] items-center justify-center rounded-lg border ${activeStep === 1 ? "border-border dark:border-highlight" : "border-border"} ${activeStep === 1 ? "opacity-100" : "opacity-50"} `}
             >
               <Rocket
                 className={`text-highlighted-text ${activeStep === 1 ? "opacity-100" : "opacity-50"}`}
@@ -18,7 +18,7 @@ export default function CreateCommunityProgress({ activeStep }) {
               />
             </div>
             <div
-              className={`min-h-[50px] max-w-[0.5px] rounded-lg border ${activeStep === 1 ? "border-highlight" : "border-border"}`}
+              className={`min-h-[50px] max-w-[0.5px] rounded-lg border ${activeStep === 1 ? "border-text-gray/40 dark:border-highlight" : "border-border/70 dark:border-border"}`}
             ></div>
           </div>
           <div className="flex flex-col text-sm font-medium">
@@ -38,7 +38,7 @@ export default function CreateCommunityProgress({ activeStep }) {
         <div className="flex h-fit w-fit gap-4">
           <div className="flex flex-col items-center justify-center">
             <div
-              className={`flex h-[45px] w-[45px] items-center justify-center rounded-lg border ${activeStep === 2 ? "border-highlight" : "border-border"} ${activeStep === 2 ? "opacity-100" : "opacity-50"} `}
+              className={`flex h-[45px] w-[45px] items-center justify-center rounded-lg border ${activeStep === 2 ? "border-border dark:border-highlight" : "border-border"} ${activeStep === 2 ? "opacity-100" : "opacity-50"} `}
             >
               <Pencil
                 className={`text-highlighted-text ${activeStep === 2 ? "opacity-100" : "opacity-50"}`}
@@ -46,7 +46,7 @@ export default function CreateCommunityProgress({ activeStep }) {
               />
             </div>
             <div
-              className={`min-h-[50px] max-w-[0.5px] rounded-lg border ${activeStep === 2 ? "border-highlight" : "border-border"}`}
+              className={`min-h-[50px] max-w-[0.5px] rounded-lg border ${activeStep === 2 ? "border-text-gray/40 dark:border-highlight" : "border-border/70 dark:border-border"}`}
             ></div>
           </div>
           <div className="flex flex-col text-sm font-medium">
@@ -66,7 +66,7 @@ export default function CreateCommunityProgress({ activeStep }) {
         <div className="flex h-fit w-fit gap-4">
           <div className="flex flex-col items-center justify-center">
             <div
-              className={`flex h-[45px] w-[45px] items-center justify-center rounded-lg border ${activeStep === 3 ? "border-highlight" : "border-border"} ${activeStep === 3 ? "opacity-100" : "opacity-50"}`}
+              className={`flex h-[45px] w-[45px] items-center justify-center rounded-lg border ${activeStep === 3 ? "border-border dark:border-highlight" : "border-border"} ${activeStep === 3 ? "opacity-100" : "opacity-50"}`}
             >
               <Award
                 className={`text-highlighted-text ${activeStep === 3 ? "opacity-100" : "opacity-50"}`}
