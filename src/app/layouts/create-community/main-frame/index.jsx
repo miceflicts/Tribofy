@@ -7,6 +7,7 @@ export default function CreateCommunityMainFrame({
   activeStep,
   clickedWelcomePageNextButton,
   onGetCommunityDetails,
+  onChoosenPricing,
 }) {
   return (
     <>
@@ -22,7 +23,9 @@ export default function CreateCommunityMainFrame({
           ></CommunityDetailsPage>
         )}
         {activeStep === 3 && (
-          <CommunityDetailsPricing></CommunityDetailsPricing>
+          <CommunityDetailsPricing
+            onChoosenPricing={onChoosenPricing}
+          ></CommunityDetailsPricing>
         )}
       </div>
     </>

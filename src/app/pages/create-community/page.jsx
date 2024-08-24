@@ -43,6 +43,7 @@ export default function CreateCommunity() {
             activeStep={activeStep}
             clickedWelcomePageNextButton={handleClickedNextButton}
             onGetCommunityDetails={handleOnGetCommunityDetails}
+            onChoosenPricing={handleClickedNextButton}
           />
         </div>
 

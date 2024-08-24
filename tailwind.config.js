@@ -1,4 +1,19 @@
 /** @type {import('tailwindcss').Config} */
+
+const plugin = require("tailwindcss/plugin");
+
+const addVariablesForColors = plugin(function ({ addBase, theme }) {
+  const allColors = theme("colors");
+  const newVars = Object.keys(allColors).reduce((acc, key) => {
+    acc[`--${key}`] = allColors[key];
+    return acc;
+  }, {});
+
+  addBase({
+    ":root": newVars,
+  });
+});
+
 module.exports = {
   darkMode: ["class"],
   content: [
@@ -30,19 +45,16 @@ module.exports = {
         "button-hover": "hsl(var(--button-hover))",
         "button-active": "hsl(var(--button-active))",
         "button-text": "hsl(var(--button-text))",
-
         "text-default": "hsl(var(--text-default))",
         "text-gray": "hsl(var(--text-gray))",
         "text-muted": "hsl(var(--text-muted))",
         "text-highlight": "hsl(var(--text-highlight))",
         link: "hsl(var(--link))",
         "link-hover": "hsl(var(--link-hover))",
-
         focus: "hsl(var(--focus))",
         hover: "hsl(var(--hover))",
         active: "hsl(var(--active))",
         overlay: "hsl(var(--overlay))",
-
         tooltip: "hsl(var(--tooltip))",
         "tooltip-text": "hsl(var(--tooltip-text))",
         badge: "hsl(var(--badge))",
@@ -51,20 +63,15 @@ module.exports = {
         codeInline: "hsl(var(--code-inline))",
         scrollbarThumb: "hsl(var(--scrollbar-thumb))",
         scrollbarTrack: "hsl(var(--scrollbar-track))",
-
         "alt-purple": "hsl(var(--alt-purple))",
         "alt-teal": "hsl(var(--alt-teal))",
         "alt-coral": "hsl(var(--alt-coral))",
-
         "element-active": "hsl(var(--element-active))",
         "element-inactive": "hsl(var(--element-inactive))",
         "element-disabled": "hsl(var(--element-disabled))",
         "element-disabled-text": "hsl(var(--element-disabled-text))",
-
         shadow: "hsl(var(--shadow))",
-
         radius: "var(--radius)",
-
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -117,5 +124,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [addVariablesForColors, require("tailwindcss-animate")],
 };

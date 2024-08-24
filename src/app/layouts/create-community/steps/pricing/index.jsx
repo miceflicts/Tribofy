@@ -1,12 +1,21 @@
-import { Button } from "@/components/ui/button";
-import React from "react";
-import CompanyLogo from "@/app/components/general/company-logo";
+"use client";
 
-export default function CommunityDetailsPricing(props) {
+import { Button } from "@/components/ui/button";
+import React, { useState } from "react";
+import CompanyLogo from "@/app/components/general/company-logo";
+import CreatingCommunityProgress from "../creating-progress";
+
+export default function CommunityDetailsPricing({ onChoosenPricing }) {
+  const [hasChoosenPlan, setHasChoosenPlan] = useState(false);
+
+  const handleChoosenPlan = () => {
+    setHasChoosenPlan(true);
+  };
+
   return (
-    <>
-      <>
-        <div className="flex h-fit w-full flex-col items-center justify-center gap-3">
+    <div className="flex h-fit w-full flex-col items-center justify-center gap-3">
+      {!hasChoosenPlan ? (
+        <>
           <CompanyLogo
             svgSize={40}
             color="text-text-default"
@@ -22,14 +31,21 @@ export default function CommunityDetailsPricing(props) {
               card required.
             </h3>
           </div>
-        </div>
 
-        <div className="aspect-video w-[600px] rounded-xl bg-accent"></div>
+          <div className="aspect-video w-[600px] rounded-xl bg-accent"></div>
 
-        <Button className="w-[60%] bg-button py-6 text-button-text hover:bg-button-hover active:bg-button-active">
-          Get Started Now
-        </Button>
-      </>
-    </>
+          <Button
+            className="w-[60%] bg-button py-6 text-button-text hover:bg-button-hover active:bg-button-active"
+            onClick={handleChoosenPlan}
+          >
+            Get Started Now
+          </Button>
+        </>
+      ) : (
+        <>
+          <CreatingCommunityProgress></CreatingCommunityProgress>
+        </>
+      )}
+    </div>
   );
 }
