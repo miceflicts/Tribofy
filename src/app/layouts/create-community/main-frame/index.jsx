@@ -6,6 +6,7 @@ import CommunityDetailsPricing from "../steps/pricing";
 export default function CreateCommunityMainFrame({
   activeStep,
   clickedWelcomePageNextButton,
+  onGetCommunityDetails,
 }) {
   return (
     <>
@@ -15,7 +16,11 @@ export default function CreateCommunityMainFrame({
             onNextButtonClick={clickedWelcomePageNextButton}
           ></CommunityWelcomePage>
         )}
-        {activeStep === 2 && <CommunityDetailsPage></CommunityDetailsPage>}
+        {activeStep === 2 && (
+          <CommunityDetailsPage
+            onFormSubmit={onGetCommunityDetails}
+          ></CommunityDetailsPage>
+        )}
         {activeStep === 3 && (
           <CommunityDetailsPricing></CommunityDetailsPricing>
         )}

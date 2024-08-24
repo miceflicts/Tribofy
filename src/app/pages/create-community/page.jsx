@@ -3,13 +3,32 @@
 import CreateCommunityBottomProgress from "@/app/layouts/create-community/bottom-progress";
 import CreateCommunityLeftSidebar from "@/app/layouts/create-community/left-sidebar";
 import CreateCommunityMainFrame from "@/app/layouts/create-community/main-frame";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function CreateCommunity() {
   const [activeStep, setActiveStep] = useState(1);
+  const [communityDetails, setCommunityDetails] = useState({
+    name: "",
+    description: "",
+    slug: "",
+  });
 
   const handleClickedNextButton = () => {
     setActiveStep(activeStep + 1);
+  };
+
+  const handleOnGetCommunityDetails = (data) => {
+    try {
+      setCommunityDetails({
+        name: data.communityTitle,
+        description: data.communityDescription,
+        slug: data.communitySlug,
+      });
+
+      handleClickedNextButton();
+    } catch (error) {
+      console.error("Error: updating the community details", error);
+    }
   };
 
   return (
@@ -23,6 +42,7 @@ export default function CreateCommunity() {
           <CreateCommunityMainFrame
             activeStep={activeStep}
             clickedWelcomePageNextButton={handleClickedNextButton}
+            onGetCommunityDetails={handleOnGetCommunityDetails}
           />
         </div>
 

@@ -6,23 +6,30 @@ import CompanyLogo from "@/app/components/general/company-logo";
 import { Input } from "@/components/ui/input";
 import useAutosizeTextArea from "@/app/hooks/use-autosize-text-area";
 
+import { communityService } from "@/app/services/api";
+
 export default function CommunityDetailsPage({ onFormSubmit }) {
   const [communityTitle, setCommunityTitle] = useState("");
   const [communityDescription, setCommunityDescriptionValue] = useState("");
   const [communitySlug, setCommunitySlug] = useState("");
   const [isSlugEdited, setIsSlugEdited] = useState(false);
+
+  const [isCheckingIfCommunityExists, setIsCheckingIfCommunityExists] =
+    useState(false);
+
+  const [errors, setErrors] = useState({
+    title: "",
+    description: "",
+    slug: "",
+  });
+
   const communityAreaRef = useRef(null);
 
   useEffect(() => {
-    console.log(communityTitle);
     if (!isSlugEdited) {
       updateCommunitySlug(communityTitle);
     }
   }, [communityTitle]);
-
-  useEffect(() => {
-    console.log(communityDescription);
-  }, [communityDescription]);
 
   useAutosizeTextArea(communityAreaRef.current, communityDescription);
 
@@ -30,6 +37,7 @@ export default function CommunityDetailsPage({ onFormSubmit }) {
     const val = evt.target?.value;
     if (val.length <= 500) {
       setCommunityDescriptionValue(val);
+      setErrors((prev) => ({ ...prev, description: "" }));
     }
   };
 
@@ -40,6 +48,7 @@ export default function CommunityDetailsPage({ onFormSubmit }) {
       if (!isSlugEdited) {
         updateCommunitySlug(val);
       }
+      setErrors((prev) => ({ ...prev, title: "" }));
     }
   };
 
@@ -48,6 +57,7 @@ export default function CommunityDetailsPage({ onFormSubmit }) {
     if (val.length <= 30) {
       setCommunitySlug(val);
       setIsSlugEdited(true);
+      setErrors((prev) => ({ ...prev, slug: "" }));
     }
   };
 
@@ -57,16 +67,88 @@ export default function CommunityDetailsPage({ onFormSubmit }) {
     setIsSlugEdited(false);
   };
 
+  const validateForm = () => {
+    let isValid = true;
+    const newErrors = { title: "", description: "", slug: "" };
+
+    if (communityTitle.length < 3) {
+      newErrors.title = "Community name is too short";
+      isValid = false;
+    }
+
+    if (communityDescription.length === 0) {
+      newErrors.description = "Community description is required";
+      isValid = false;
+    }
+
+    if (communitySlug.length < 3) {
+      newErrors.slug = "Community url is too short";
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  };
+
+  const checkIfCommunityExists = async (communityTitle, communitySlug) => {
+    setIsCheckingIfCommunityExists(true);
+    try {
+      const communityData = { name: communityTitle, slug: communitySlug };
+      await communityService.checkIfCommunityExists(communityData);
+      handleOnNewCommunity();
+    } catch (error) {
+      /* console.error(error.response?.data?.message); */
+      const errorMessage = error.response?.data?.message || "";
+
+      const errorTypes = {
+        name: "name",
+        url: "url",
+        both: "name and url",
+      };
+
+      const updateErrors = (type) => {
+        setErrors((prev) => ({
+          ...prev,
+          title:
+            type !== "url"
+              ? "A community with this name already exists"
+              : prev.title,
+          slug:
+            type !== "name"
+              ? "A community with this url already exists"
+              : prev.slug,
+        }));
+      };
+
+      if (errorMessage.includes(errorTypes.both)) {
+        updateErrors("both");
+      } else if (errorMessage.includes(errorTypes.name)) {
+        updateErrors("name");
+      } else if (errorMessage.includes(errorTypes.url)) {
+        updateErrors("url");
+      }
+    } finally {
+      setIsCheckingIfCommunityExists(false);
+    }
+  };
+
+  const handleOnNewCommunity = () => {
+    if (typeof onFormSubmit === "function") {
+      onFormSubmit({ communityTitle, communityDescription, communitySlug });
+    } else {
+      console.error("onFormSubmit is not a function");
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Lógica para enviar os detalhes da comunidade
-    console.log({
-      communityTitle,
-      communityDescription,
-      communitySlug,
-    });
-
-    onFormSubmit({ communityTitle, communityDescription, communitySlug });
+    if (validateForm()) {
+      if (typeof onFormSubmit === "function") {
+        checkIfCommunityExists(communityTitle, communitySlug);
+      } else {
+        console.error("onFormSubmit is not a function");
+      }
+    }
   };
 
   useEffect(() => {
@@ -99,7 +181,7 @@ export default function CommunityDetailsPage({ onFormSubmit }) {
             value={communityTitle}
             onChange={handleCommunityTitleChange}
             className={`flex w-full rounded-md border-border bg-background py-6 text-foreground focus-visible:ring-transparent ${
-              communityTitle.length > 30
+              communityTitle.length > 30 || errors.title
                 ? "border-destructive text-destructive"
                 : ""
             }`}
@@ -108,14 +190,15 @@ export default function CommunityDetailsPage({ onFormSubmit }) {
           <div className="flex w-full justify-between">
             <span
               className={`pl-4 pt-1 text-[0.8rem] ${
-                communityTitle.length > 30
+                communityTitle.length > 30 || errors.title
                   ? "text-destructive"
                   : "text-text-gray"
               }`}
             >
-              {communityTitle.length >= 3
-                ? "You can change this later"
-                : "Community name is too short"}
+              {errors.title ||
+                (communityTitle.length >= 3
+                  ? "You can change this later"
+                  : "Community name is too short")}
             </span>
             <span
               className={`pr-1 pt-1 text-[0.8rem] ${
@@ -134,7 +217,7 @@ export default function CommunityDetailsPage({ onFormSubmit }) {
             onChange={handleCommunityDescriptionChange}
             placeholder="Describe your community"
             className={`flex min-h-10 w-full resize-none overflow-hidden rounded-md border border-border bg-background px-3 py-5 text-sm font-medium text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-0 ${
-              communityDescription.length > 500
+              communityDescription.length > 500 || errors.description
                 ? "border-destructive text-destructive"
                 : ""
             }`}
@@ -145,14 +228,15 @@ export default function CommunityDetailsPage({ onFormSubmit }) {
           <div className="flex w-full justify-between">
             <span
               className={`pl-4 pt-1 text-[0.8rem] ${
-                communityDescription.length > 500
+                communityDescription.length > 500 || errors.description
                   ? "text-destructive"
                   : "text-text-gray"
               }`}
             >
-              {communityDescription.length >= 1
-                ? "You can change this later"
-                : "Community description is required"}
+              {errors.description ||
+                (communityDescription.length >= 1
+                  ? "You can change this later"
+                  : "Community description is required")}
             </span>
             <span
               className={`pr-1 pt-1 text-[0.8rem] ${
@@ -172,7 +256,7 @@ export default function CommunityDetailsPage({ onFormSubmit }) {
             value={communitySlug}
             onChange={handleCommunitySlugChange}
             className={`flex w-full rounded-md border-border bg-background py-6 text-foreground focus-visible:ring-transparent ${
-              communitySlug.length > 30
+              communitySlug.length > 30 || errors.slug
                 ? "border-destructive text-destructive"
                 : ""
             }`}
@@ -181,14 +265,15 @@ export default function CommunityDetailsPage({ onFormSubmit }) {
           <div className="flex w-full justify-between">
             <span
               className={`pl-4 pt-1 text-[0.8rem] ${
-                communitySlug.length > 30
+                communitySlug.length > 30 || errors.slug
                   ? "text-destructive"
                   : "text-text-gray"
               }`}
             >
-              {communitySlug.length >= 3
-                ? "You can change your community url later"
-                : "Community url is too short"}
+              {errors.slug ||
+                (communitySlug.length >= 3
+                  ? "You can change your community url later"
+                  : "Community url is too short")}
             </span>
             <span
               className={`pr-1 pt-1 text-[0.8rem] ${
