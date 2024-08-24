@@ -41,7 +41,7 @@ export default function CommunityHeader({ toggleSidebar, sidebarToggled }) {
           <Input
             type="email"
             placeholder="Search"
-            className="flex h-[32px] w-[480px] rounded-md border-border bg-background pl-10 text-foreground focus-visible:ring-transparent"
+            className="flex h-[32px] w-[480px] rounded-md border-border bg-background pl-10 text-foreground focus-visible:ring-transparent dark:bg-background"
           />
         </div>
 
