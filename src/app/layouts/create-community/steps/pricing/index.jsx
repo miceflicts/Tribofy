@@ -4,8 +4,8 @@ import CompanyLogo from "@/app/components/general/company-logo";
 
 export default function CommunityDetailsPricing({ onChoosenPricing }) {
   return (
-    <div className="flex h-fit w-full flex-col items-center justify-center gap-3">
-      <>
+    <>
+      <div className="flex h-fit w-full flex-col items-center justify-center gap-3">
         <CompanyLogo
           svgSize={40}
           color="text-text-default"
@@ -21,16 +21,16 @@ export default function CommunityDetailsPricing({ onChoosenPricing }) {
             required.
           </h3>
         </div>
+      </div>
 
-        <div className="aspect-video w-[600px] rounded-xl bg-accent"></div>
+      <div className="aspect-video w-[600px] rounded-xl bg-accent"></div>
 
-        <Button
-          className="w-[60%] bg-button py-6 text-button-text hover:bg-button-hover active:bg-button-active"
-          onClick={onChoosenPricing}
-        >
-          Get Started Now
-        </Button>
-      </>
-    </div>
+      <Button
+        className="w-[60%] bg-button py-6 text-button-text hover:bg-button-hover active:bg-button-active"
+        onClick={onChoosenPricing}
+      >
+        Get Started Now
+      </Button>
+    </>
   );
 }

@@ -13,13 +13,13 @@ export default function CreateCommunity() {
   };
 
   return (
-    <div className="min-w-screen flex h-screen">
-      <div className="flex h-full w-fit items-center justify-center">
+    <div className="flex h-screen w-screen overflow-x-hidden">
+      <div className="flex h-full w-fit items-center justify-center max-[1200px]:hidden">
         <CreateCommunityLeftSidebar activeStep={activeStep} />
       </div>
 
       <div className="flex h-full w-full flex-col">
-        <div className="mb-20 flex flex-1 items-center justify-center">
+        <div className="mb-20 flex w-full flex-1 items-center justify-center">
           <CreateCommunityMainFrame
             activeStep={activeStep}
             clickedWelcomePageNextButton={handleClickedNextButton}
@@ -27,7 +27,7 @@ export default function CreateCommunity() {
           />
         </div>
 
-        <div className="mb-10 flex w-full items-center justify-center">
+        <div className="flex w-full items-center justify-center">
           <CreateCommunityBottomProgress activeStep={activeStep} />
         </div>
       </div>

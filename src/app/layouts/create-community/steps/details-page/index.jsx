@@ -158,14 +158,14 @@ export default function CommunityDetailsPage({ onFormSubmit }) {
   }, [communityDescription]);
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center gap-10">
-      <div className="flex h-fit w-full flex-col items-center justify-center gap-3">
+    <div className="flex max-h-screen w-full min-w-[40vw] flex-col items-center justify-center overflow-y-hidden p-6 sm:p-8 md:p-8 lg:p-10">
+      <div className="mb-6 flex w-full max-w-2xl flex-col items-center justify-center gap-3 sm:mb-8">
         <CompanyLogo svgSize={40} color="text-text-default" noText={true} />
-        <div className="flex w-fit flex-col items-center gap-1">
-          <h1 className="text-3xl font-semibold text-text-default">
+        <div className="flex w-fit flex-col items-center gap-1 text-center">
+          <h1 className="text-2xl font-semibold text-text-default sm:text-3xl">
             Shape Your Unique Space
           </h1>
-          <h3 className="font-normal text-highlighted-text">
+          <h3 className="text-sm font-normal text-highlighted-text sm:text-base">
             Every detail counts. Craft a community that's as unique as you are
           </h3>
         </div>
@@ -173,7 +173,7 @@ export default function CommunityDetailsPage({ onFormSubmit }) {
 
       <form
         onSubmit={handleSubmit}
-        className="flex h-fit w-[600px] flex-col items-center justify-center gap-6"
+        className="flex w-full max-w-md flex-col items-center justify-center gap-6 sm:max-w-lg md:max-w-xl lg:max-w-2xl"
       >
         <div className="flex w-full flex-col">
           <Input
@@ -187,9 +187,9 @@ export default function CommunityDetailsPage({ onFormSubmit }) {
             }`}
             placeholder="Community Name"
           />
-          <div className="flex w-full justify-between">
+          <div className="flex w-full justify-between text-xs sm:text-sm">
             <span
-              className={`pl-4 pt-1 text-[0.8rem] ${
+              className={`pl-2 pt-1 sm:pl-4 ${
                 communityTitle.length > 30 || errors.title
                   ? "text-destructive"
                   : "text-text-gray"
@@ -201,7 +201,7 @@ export default function CommunityDetailsPage({ onFormSubmit }) {
                   : "Community name is too short")}
             </span>
             <span
-              className={`pr-1 pt-1 text-[0.8rem] ${
+              className={`pr-1 pt-1 ${
                 communityTitle.length > 30
                   ? "text-destructive"
                   : "text-text-gray"
@@ -216,7 +216,7 @@ export default function CommunityDetailsPage({ onFormSubmit }) {
           <textarea
             onChange={handleCommunityDescriptionChange}
             placeholder="Describe your community"
-            className={`flex min-h-10 w-full resize-none overflow-hidden rounded-md border border-border bg-background px-3 py-5 text-sm font-medium text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-0 ${
+            className={`flex min-h-10 w-full resize-none overflow-hidden rounded-md border border-border bg-background px-3 py-6 text-sm font-medium text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-0 sm:py-5 ${
               communityDescription.length > 500 || errors.description
                 ? "border-destructive text-destructive"
                 : ""
@@ -225,9 +225,9 @@ export default function CommunityDetailsPage({ onFormSubmit }) {
             rows={1}
             value={communityDescription}
           />
-          <div className="flex w-full justify-between">
+          <div className="flex w-full justify-between text-xs sm:text-sm">
             <span
-              className={`pl-4 pt-1 text-[0.8rem] ${
+              className={`pl-2 pt-1 sm:pl-4 ${
                 communityDescription.length > 500 || errors.description
                   ? "text-destructive"
                   : "text-text-gray"
@@ -239,7 +239,7 @@ export default function CommunityDetailsPage({ onFormSubmit }) {
                   : "Community description is required")}
             </span>
             <span
-              className={`pr-1 pt-1 text-[0.8rem] ${
+              className={`pr-1 pt-1 ${
                 communityDescription.length > 500
                   ? "text-destructive"
                   : "text-text-gray"
@@ -262,9 +262,9 @@ export default function CommunityDetailsPage({ onFormSubmit }) {
             }`}
             placeholder="Community Url"
           />
-          <div className="flex w-full justify-between">
+          <div className="flex w-full justify-between text-xs sm:text-sm">
             <span
-              className={`pl-4 pt-1 text-[0.8rem] ${
+              className={`pl-2 pt-1 sm:pl-4 ${
                 communitySlug.length > 30 || errors.slug
                   ? "text-destructive"
                   : "text-text-gray"
@@ -276,7 +276,7 @@ export default function CommunityDetailsPage({ onFormSubmit }) {
                   : "Community url is too short")}
             </span>
             <span
-              className={`pr-1 pt-1 text-[0.8rem] ${
+              className={`pr-1 pt-1 ${
                 communitySlug.length > 30
                   ? "text-destructive"
                   : "text-text-gray"
@@ -287,7 +287,7 @@ export default function CommunityDetailsPage({ onFormSubmit }) {
           </div>
         </div>
 
-        <Button className="mt-5 w-[60%] bg-button py-6 text-button-text hover:bg-button-hover active:bg-button-active">
+        <Button className="mt-5 w-full bg-button py-4 text-button-text hover:bg-button-hover active:bg-button-active sm:w-[60%] sm:py-6">
           Continue
         </Button>
       </form>

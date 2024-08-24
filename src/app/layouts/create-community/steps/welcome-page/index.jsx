@@ -22,7 +22,7 @@ export default function CommunityWelcomePage({ onNextButtonClick }) {
         </div>
       </div>
 
-      <div className="aspect-video w-[600px] rounded-xl bg-accent"></div>
+      <div className="aspect-video w-[600px] rounded-xl bg-accent max-[700px]:w-[500px] max-[550px]:w-[450px] max-[500px]:w-[400px] max-[450px]:w-[350px] max-[370px]:w-[300px]"></div>
 
       <Button
         className="w-[60%] bg-button py-6 text-button-text hover:bg-button-hover active:bg-button-active"
