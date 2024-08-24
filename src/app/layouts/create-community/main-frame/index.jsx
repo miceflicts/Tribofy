@@ -50,10 +50,9 @@ export default function CreateCommunityMainFrame({
           ></CommunityDetailsPricing>
         )}
         {activeStep === 4 && (
-          <CreatingCommunit
-            yProgress
+          <CreatingCommunityProgress
             communityData={communityDetails}
-          ></CreatingCommunit>
+          ></CreatingCommunityProgress>
         )}
       </div>
     </>
