@@ -9,4 +9,12 @@ export const userService = {
       throw error;
     }
   },
+  logIn: async (userData) => {
+    try {
+      const response = await api.post("/user/login", userData);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
 };

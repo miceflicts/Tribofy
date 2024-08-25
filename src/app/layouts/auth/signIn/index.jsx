@@ -7,26 +7,54 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import CompanyLogo from "@/app/components/general/company-logo";
 
+import { useSession, signIn, signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
+
 function SignIn() {
   const [formData, setFormData] = useState({
     emailAddress: "",
     password: "",
   });
-  const [errors, setErrors] = useState({});
+  const router = useRouter();
+  const [error, setError] = useState("");
+  const { data: session } = useSession();
+
+  useEffect(() => {
+    console.log(session);
+  }, [session]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: "" }));
+    setError(""); // Clear error when user types
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    try {
+      const res = await signIn("credentials", {
+        redirect: false,
+        email: formData.emailAddress,
+        password: formData.password,
+      });
+
+      if (res.error) {
+        setError("Invalid Credentials");
+        console.log(res);
+        return;
+      }
+
+      console.log(res);
+      console.log("Success!");
+    } catch (error) {
+      console.log(error);
     }
   };
 
   return (
     <div className="mx-auto h-fit w-full max-w-md border border-border bg-emphasis p-4 dark:bg-emphasis md:rounded-2xl md:p-8">
       <div className="flex w-full flex-col items-center justify-center">
-        {/* <h2 className="text-xl font-bold text-text-default">Welcome back!</h2> */}
-
         <div className="flex h-fit w-fit items-center justify-center rounded-lg bg-gradient-to-tr from-black to-black/45 p-3 dark:to-black/5">
           <CompanyLogo svgSize={50} color="text-white " noText></CompanyLogo>
         </div>
@@ -35,7 +63,7 @@ function SignIn() {
         </p>
       </div>
 
-      <form className="mb-6 mt-14 flex flex-col gap-4">
+      <form onSubmit={handleSubmit} className="mb-6 mt-14 flex flex-col gap-4">
         <div className="flex h-fit w-full flex-col">
           <LabelInputContainer className="mb-4">
             <Label htmlFor="email">Email Address</Label>
@@ -47,6 +75,7 @@ function SignIn() {
               type="email"
               value={formData.emailAddress}
               onChange={handleChange}
+              required
             />
           </LabelInputContainer>
           <LabelInputContainer className="mb-4">
@@ -59,10 +88,11 @@ function SignIn() {
               className="dark:bg-background"
               value={formData.password}
               onChange={handleChange}
+              required
             />
-            {errors.length > 0 ? (
-              <span className="text ml-2 text-sm">{errors}</span>
-            ) : null}
+            {error && (
+              <span className="mb-4 ml-2 text-sm text-red-500">{error}</span>
+            )}
           </LabelInputContainer>
 
           <div className="mb-4 ml-2 flex items-center justify-start gap-3">
@@ -83,7 +113,7 @@ function SignIn() {
 
         <div className="mt-3 flex items-center justify-center gap-1">
           <p className="text-sm font-medium text-gray-600 dark:text-neutral-200">
-            Dont have an account yet?
+            Don't have an account yet?
           </p>
 
           <Link href={"/pages/auth/signUp"}>
