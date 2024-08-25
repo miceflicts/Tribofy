@@ -68,7 +68,7 @@ function SignIn() {
             <Input
               id="emailAddress"
               name="emailAddress"
-              placeholder="projectmayhem@fc.com"
+              placeholder="youremail@example.com"
               className="dark:bg-background"
               type="email"
               value={formData.emailAddress}

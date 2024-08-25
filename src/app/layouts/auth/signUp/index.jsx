@@ -7,6 +7,9 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import CompanyLogo from "@/app/components/general/company-logo";
 
+import { useSession, signIn, signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
+
 import { userService } from "@/app/services/api";
 
 function SignUp() {
@@ -17,6 +20,7 @@ function SignUp() {
     password: "",
     confirmPassword: "",
   });
+  const router = useRouter();
   const [errors, setErrors] = useState({});
 
   const validateForm = () => {
@@ -77,7 +81,23 @@ function SignUp() {
       };
 
       const res = await userService.createUser(userData);
-      console.log(res);
+      console.log("Created user:", res);
+
+      // check if res is ok, if so login user
+      console.log("User created successfully");
+      const userLogin = await signIn("credentials", {
+        redirect: false,
+        email: formData.emailAddress,
+        password: formData.password,
+      });
+
+      console.log("User logged in:", userLogin);
+
+      if (userLogin.error) {
+        console.log(userLogin.error);
+      } else {
+        router.push("/pages/landing-page");
+      }
     } catch (error) {
       const errorMessage = error.response?.data?.message || error.message;
       console.error("Error creating community:", errorMessage);
