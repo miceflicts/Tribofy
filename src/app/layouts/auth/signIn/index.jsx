@@ -39,14 +39,12 @@ function SignIn() {
         password: formData.password,
       });
 
+      router.push("/pages/landing-page");
+
       if (res.error) {
         setError("Invalid Credentials");
-        console.log(res);
         return;
       }
-
-      console.log(res);
-      console.log("Success!");
     } catch (error) {
       console.log(error);
     }
