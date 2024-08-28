@@ -4,6 +4,7 @@ import React from "react";
 
 import { cn } from "@/lib/utils";
 import GridPattern from "@/components/magicui/grid-pattern";
+import DiscoverCards from "@/app/components/discover/discover-cards";
 
 const DiscoveryPage = () => {
   return (
@@ -21,6 +22,8 @@ const DiscoveryPage = () => {
         <div className="z-50 mt-[50px] flex h-fit w-full flex-col items-center justify-center gap-4 p-5 font-semibold">
           <DiscoverMainText></DiscoverMainText>
           <DiscoverSearch></DiscoverSearch>
+
+          <DiscoverCards></DiscoverCards>
         </div>
       </div>
     </>
