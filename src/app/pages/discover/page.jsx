@@ -11,14 +11,14 @@ import "./index.css";
 const DiscoveryPage = () => {
   return (
     <>
-      <div className="max-w-screen min-w-screen flex min-h-screen">
+      <div className="max-w-screen min-w-screen flex h-fit min-h-screen flex-col">
         <GridPattern
           width={150}
           height={10000}
           x={-1}
           y={-1}
           className={cn(
-            "stroke-gray-400/60 [mask-image:linear-gradient(to_bottom_right,white,transparent)] dark:bg-gray-300/5 dark:[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]",
+            "min-h-full stroke-gray-400/60 [mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)] dark:bg-gray-300/5",
           )}
         />
         <div className="z-50 mt-[50px] flex h-fit w-full flex-col items-center justify-center gap-4 p-5 font-semibold">
