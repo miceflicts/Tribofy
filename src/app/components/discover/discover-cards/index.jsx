@@ -1,9 +1,39 @@
 import React from "react";
 
-export default function DiscoverCards(props) {
+export default function DiscoverCards() {
   return (
-    <>
-      <div className="mx-auto grid w-full max-w-[80%] grid-cols-3 items-start gap-4 max-[1400px]:grid-cols-2 max-[700px]:grid-cols-1"></div>
-    </>
+    <div className="max-w-screen container mx-auto w-full overflow-x-hidden px-4">
+      <div className="flex flex-wrap justify-center gap-14">
+        {[...Array(9)].map((_, index) => (
+          <div
+            key={index}
+            className="flex h-[400px] w-full max-w-[380px] cursor-pointer flex-col rounded-xl border border-border bg-card hover:bg-card-hover sm:w-[calc(50%-28px)] xl:w-[380px]"
+          >
+            <div className="h-[180px] w-full rounded-t-xl bg-slate-600"></div>
+
+            <div className="flex h-fit w-full flex-col justify-between gap-4 px-5 pt-5">
+              <div className="flex items-center gap-3">
+                <div className="h-[45px] w-[45px] rounded-lg bg-accent"></div>
+
+                <span className="text-base font-extrabold text-highlighted-text">
+                  The hamza academy
+                </span>
+              </div>
+
+              <span className="text-base font-normal text-highlighted-text">
+                Join the #1 FREE COMMUNITY for casual chess players to hang out
+                & improve at chess the FUN way.
+              </span>
+
+              <div className="mb-5 flex items-center gap-3 text-base font-normal text-highlighted-text">
+                <span>190k Members</span>
+                <span>-</span>
+                <span className="font-bold">Paid</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }

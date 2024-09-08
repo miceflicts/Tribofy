@@ -6,10 +6,12 @@ import { cn } from "@/lib/utils";
 import GridPattern from "@/components/magicui/grid-pattern";
 import DiscoverCards from "@/app/components/discover/discover-cards";
 
+import "./index.css";
+
 const DiscoveryPage = () => {
   return (
     <>
-      <div className="flex min-h-screen w-screen">
+      <div className="max-w-screen min-w-screen flex min-h-screen">
         <GridPattern
           width={150}
           height={10000}
@@ -23,7 +25,9 @@ const DiscoveryPage = () => {
           <DiscoverMainText></DiscoverMainText>
           <DiscoverSearch></DiscoverSearch>
 
-          <DiscoverCards></DiscoverCards>
+          <div className="mt-14 flex h-full w-full">
+            <DiscoverCards></DiscoverCards>
+          </div>
         </div>
       </div>
     </>

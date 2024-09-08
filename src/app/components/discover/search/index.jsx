@@ -11,8 +11,8 @@ export default function DiscoverSearch(props) {
           placeholder="Search for communities names or keywords"
           type="text"
         />
-        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-          <div className="flex h-[2rem] w-[2.5rem] items-center justify-center rounded-xl bg-emphasis">
+        <div className="absolute inset-y-0 right-0 flex cursor-pointer items-center pr-3">
+          <div className="flex h-[2rem] w-[3rem] items-center justify-center rounded-xl bg-emphasis hover:bg-emphasis/70">
             <Search className="text-highlighted-text" size={18} />
           </div>
         </div>
