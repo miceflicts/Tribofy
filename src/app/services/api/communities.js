@@ -21,4 +21,15 @@ export const communityService = {
       throw error;
     }
   },
+
+  discoverCommunities: async (fetchParams) => {
+    try {
+      const response = await api.get(
+        `/communities/discoverCommunities?page=${fetchParams.page || 1}&limit=${fetchParams.limit || 9}`,
+      );
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
 };
