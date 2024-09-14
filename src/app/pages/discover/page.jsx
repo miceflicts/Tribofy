@@ -17,6 +17,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import Filter from "@/app/components/community/main-section/filter";
 
 const DiscoveryPage = () => {
   const [error, setError] = useState("");
@@ -84,8 +85,17 @@ const DiscoveryPage = () => {
           <DiscoverMainText />
           <DiscoverSearch />
 
+          <div className="mt-14 flex w-full items-center justify-center gap-5">
+            <Filter text={"General"}></Filter>
+            <Filter text={"General"}></Filter>
+            <Filter text={"General"}></Filter>
+            <Filter text={"General"}></Filter>
+            <Filter text={"General"}></Filter>
+            <Filter text={"General"}></Filter>
+          </div>
+
           {communitiesData.communities !== undefined ? (
-            <div className="mt-14 flex h-full w-full">
+            <div className="mt-4 flex h-full w-full">
               <DiscoverCards communitiesData={communitiesData} />
             </div>
           ) : (

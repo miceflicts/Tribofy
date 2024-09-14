@@ -80,6 +80,8 @@ function SignUp() {
         password: formData.password,
       };
 
+      console.log(userData);
+
       const res = await userService.createUser(userData);
       console.log("Created user:", res);
 
