@@ -1,12 +1,14 @@
 import React from "react";
+import Link from "next/link";
 
 export default function DiscoverCards({ communitiesData }) {
   return (
     <div className="max-w-screen container mx-auto w-full overflow-x-hidden px-4">
       <div className="flex flex-wrap justify-center gap-14">
         {communitiesData.communities.map((community, index) => (
-          <div
+          <Link
             key={index}
+            href={`/pages/${community.slug}/about`}
             className="flex h-[400px] w-full max-w-[380px] cursor-pointer flex-col rounded-xl border border-border bg-card hover:bg-card-hover sm:w-[calc(50%-28px)] xl:w-[380px]"
           >
             <div className="min-h-[180px] w-full rounded-t-xl bg-slate-600"></div>
@@ -30,7 +32,7 @@ export default function DiscoverCards({ communitiesData }) {
                 <span className="font-bold">Paid</span>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
