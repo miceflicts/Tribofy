@@ -30,7 +30,7 @@ const DiscoveryPage = () => {
         page: page,
         limit: 9,
       };
-      const res = await communityService.discoverCommunities(fetchParams);
+      const res = await communityService.fetchCommunities(fetchParams);
       setCommunitiesData(res);
       console.log(res);
       setCurrentPage(page);

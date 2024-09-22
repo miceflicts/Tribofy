@@ -22,10 +22,10 @@ export const communityService = {
     }
   },
 
-  discoverCommunities: async (fetchParams) => {
+  fetchCommunities: async (fetchParams) => {
     try {
       const response = await api.get(
-        `/communities/discoverCommunities?page=${fetchParams.page || 1}&limit=${fetchParams.limit || 9}`,
+        `/communities/fetchCommunities?page=${fetchParams.page || 1}&limit=${fetchParams.limit || 9}&slug=${fetchParams.slug || ""}&id=${fetchParams.id || ""}`,
       );
       return response.data;
     } catch (error) {
