@@ -17,4 +17,12 @@ export const userService = {
       throw error;
     }
   },
+  isInCommunity: async (userData) => {
+    try {
+      const response = await api.post("/user/isInCommunity", userData);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
 };
