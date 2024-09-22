@@ -19,7 +19,10 @@ export const userService = {
   },
   isInCommunity: async (userData) => {
     try {
-      const response = await api.post("/user/isInCommunity", userData);
+      const response = await api.get(
+        `/user/isInCommunity?userId=${userData.userId}&communityId=${userData.communityId}`,
+        userData,
+      );
       return response.data;
     } catch (error) {
       throw error;

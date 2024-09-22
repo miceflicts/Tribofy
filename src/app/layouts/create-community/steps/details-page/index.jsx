@@ -94,7 +94,7 @@ export default function CommunityDetailsPage({ onFormSubmit }) {
     setIsCheckingIfCommunityExists(true);
     try {
       const communityData = { name: communityTitle, slug: communitySlug };
-      await communityService.checkIfCommunityExists(communityData);
+      await communityService.checkIfCommunityAlreadyExists(communityData);
       handleOnNewCommunity();
     } catch (error) {
       /* console.error(error.response?.data?.message); */

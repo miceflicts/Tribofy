@@ -1,7 +1,7 @@
 import api from "./config";
 
 export const communityService = {
-  checkIfCommunityExists: async (communityData) => {
+  checkIfCommunityAlreadyExists: async (communityData) => {
     try {
       const response = await api.post(
         "/communities/checkIfCommunityExists",
