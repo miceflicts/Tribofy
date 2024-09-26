@@ -1,7 +1,7 @@
 "use client";
 
 import AboutCommunityImages from "@/app/components/about-community/images";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Star } from "lucide-react";
 
@@ -10,8 +10,16 @@ import { Button } from "@/components/ui/button";
 
 import { ShieldCheck } from "lucide-react";
 
-export default function AboutCommunityPage(props) {
+export default function AboutCommunityPage({ isInCommunity }) {
   const [rating, setRating] = useState(3.5);
+
+  useEffect(() => {
+    console.log(isInCommunity);
+  }, [isInCommunity]);
+
+  // Caso o isInCommunity já tenha um valor possibilite o usuário a clicar no botão de entrar em uma comunidade
+  // Se o isInCommunity for false, e o usuário clicar no botão para entrar adicionar o usuário a comunidade e levar o mesmo para a página inicial
+  // Abrir o modal de adicionar o usuário a comunidade, no momento somente irá adicionar o usuário a comunidade
 
   return (
     <>

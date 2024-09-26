@@ -69,7 +69,7 @@ export default function CommunityAbout(props) {
   }, [isAlreadyInCommunity]);
 
   useEffect(() => {
-    if (userData.user && communityData._id !== undefined) {
+    if (userData && communityData._id !== undefined) {
       isUserAlreadyInCommunity();
     }
   }, [communityData]);
@@ -98,7 +98,9 @@ export default function CommunityAbout(props) {
       ) : (
         <div className="min-w-screen flex min-h-screen flex-col items-center">
           <GeneralHeader></GeneralHeader>
-          <AboutCommunityPage></AboutCommunityPage>
+          <AboutCommunityPage
+            isInCommunity={isAlreadyInCommunity}
+          ></AboutCommunityPage>
         </div>
       )}
     </>
