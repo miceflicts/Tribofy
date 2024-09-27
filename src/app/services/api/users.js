@@ -28,4 +28,13 @@ export const userService = {
       throw error;
     }
   },
+
+  joinCommunity: async (userData) => {
+    try {
+      const response = await api.post("/user/joinCommunity", userData);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
 };

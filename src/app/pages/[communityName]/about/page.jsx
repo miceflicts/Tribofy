@@ -100,6 +100,8 @@ export default function CommunityAbout(props) {
           <GeneralHeader></GeneralHeader>
           <AboutCommunityPage
             isInCommunity={isAlreadyInCommunity}
+            communityData={communityData}
+            userData={userData}
           ></AboutCommunityPage>
         </div>
       )}
