@@ -6,12 +6,45 @@ import LeftSideBar from "@/app/layouts/community/left-sidebar";
 import MainFrame from "@/app/layouts/community/main-frame";
 import React, { useState, useEffect, useRef } from "react";
 
+import { usePathname } from "next/navigation";
+
 export default function Community() {
   const { width, height } = useWindowDimensions();
   const [sidebarToggled, setSidebarToggled] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [isShowingAddCommunities, setIsShowingAddCommunities] = useState(true);
+  const [communitySlug, setCommunitySlug] = useState("");
+
+  const [communityData, setcommunityData] = useState(null);
+
   const sidebarRef = useRef(null);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (pathname) {
+      const parts = pathname.split("/");
+      const communityName = parts[2];
+
+      communityName ? setCommunitySlug(communityName) : setIs404(true);
+    } else {
+      setIs404(true);
+    }
+  }, [pathname]);
+
+  // Continuar a partir daqui
+  const getCommunityData = async () => {
+    try {
+      const fetchParams = {
+        slug: communitySlug,
+      };
+      const res = await communityService.fetchCommunities(fetchParams);
+      setCommunityData(res);
+    } catch (error) {
+      const errorMessage = error.response?.data?.message || error.message;
+      setIs404(true);
+      setError(errorMessage);
+    }
+  };
 
   useEffect(() => {
     setIsMounted(true);
@@ -25,8 +58,8 @@ export default function Community() {
     }
   }, [width]);
 
-  /* Register clicks outside the left sidebar component, closing it */
   useEffect(() => {
+    /* Register clicks outside the left sidebar component, closing it */
     function handleClickOutside(event) {
       if (
         width <= 1024 &&

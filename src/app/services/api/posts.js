@@ -10,7 +10,7 @@ export const postService = {
     }
   },
 
-  getPosts: async () => {
+  getPosts: async (postData) => {
     try {
       const response = await api.get(
         "/posts/getAllPosts?page=1&limit=10?community=66bfd4e3fae5eb91e7833c62",
