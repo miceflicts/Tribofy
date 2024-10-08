@@ -85,6 +85,7 @@ export default function Community() {
               deviceWidth={width}
               toggleSidebar={toggleSidebar}
               sidebarToggled={sidebarToggled}
+              width={width}
             />
           </div>
 
