@@ -7,7 +7,6 @@ import React, { useState, useEffect, useRef } from "react";
 
 import Courses from "@/app/layouts/community/community-pages/courses";
 
-// Função para verificar se a URL contém uma seção específica
 const checkUrlForSection = (url, section) => {
   const urlParts = url.split("/");
   const sectionIndex = urlParts.indexOf(section);
@@ -25,7 +24,7 @@ const checkUrlForSection = (url, section) => {
   };
 };
 
-export default function Community({}) {
+export default function CommunityCourse({}) {
   const { width, height } = useWindowDimensions();
   const [sidebarToggled, setSidebarToggled] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
