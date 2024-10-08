@@ -58,25 +58,6 @@ export default function Community() {
     }
   }, [width]);
 
-  useEffect(() => {
-    /* Register clicks outside the left sidebar component, closing it */
-    function handleClickOutside(event) {
-      if (
-        width <= 1024 &&
-        sidebarToggled &&
-        sidebarRef.current &&
-        !sidebarRef.current.contains(event.target)
-      ) {
-        setSidebarToggled(false);
-      }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [sidebarToggled, width]);
-
   const toggleSidebar = () => {
     setSidebarToggled((prev) => !prev);
   };
@@ -95,7 +76,6 @@ export default function Community() {
 
         <div className="mt-[50px] flex h-full w-full flex-row max-lg:mt-[64px]">
           <div
-            ref={sidebarRef}
             className={`z-10 h-full w-fit max-lg:min-w-[0px] ${
               isShowingAddCommunities ? "min-w-[380px]" : "min-w-[300px]"
             } ${width >= 1024 ? "flex" : sidebarToggled ? "flex" : "hidden"}`}
@@ -103,11 +83,13 @@ export default function Community() {
             <LeftSideBar
               isShowingAddCommunities={isShowingAddCommunities}
               deviceWidth={width}
+              toggleSidebar={toggleSidebar}
+              sidebarToggled={sidebarToggled}
             />
           </div>
 
           <div
-            className={`flex h-full w-full justify-between px-10 pt-10 max-[1260px]:px-2 max-[900px]:px-4 ${width <= 1024 && sidebarToggled ? "opacity-30" : ""}`}
+            className={`flex h-full w-full justify-between px-10 pt-10 max-[1260px]:px-2 max-[900px]:px-4`}
           >
             <MainFrame />
           </div>

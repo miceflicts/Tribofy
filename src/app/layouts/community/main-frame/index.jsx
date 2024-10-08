@@ -4,12 +4,11 @@ import MainSectionBanner from "@/app/components/community/main-section/banner";
 import Filter from "@/app/components/community/main-section/filter";
 import Post from "@/app/components/community/posts/post";
 import WritePost from "@/app/components/community/posts/write-post";
-import React,{useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 
 import { postService } from "@/app/services/api";
 
 export default function MainFrame() {
-
   // Todo, fazer o sistema de filtros ser funcional
 
   const getPosts = async () => {
@@ -27,7 +26,6 @@ export default function MainFrame() {
     }
   };
 
-
   return (
     <>
       <div className="flex w-full justify-between gap-4">
@@ -43,7 +41,6 @@ export default function MainFrame() {
           <Post isPinned={true}></Post>
           <Post isPinned={false}></Post>
           <Post isPinned={false}></Post>
-
         </div>
 
         <div className="flex h-[90%] min-w-[270px] rounded-xl border border-border bg-emphasis max-[850px]:hidden"></div>

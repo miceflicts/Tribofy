@@ -152,7 +152,7 @@ export default function WritePostDialog(props) {
           <Input
             type="text"
             placeholder="Title"
-            className="border-none bg-transparent p-1 text-2xl font-bold ring-offset-0 ring-offset-transparent placeholder:text-highlighted-text focus-visible:ring-transparent"
+            className="border-none bg-transparent p-1 text-2xl font-bold shadow-none ring-offset-0 ring-offset-transparent placeholder:text-highlighted-text focus-visible:ring-transparent dark:border-none dark:bg-transparent dark:shadow-none dark:ring-offset-0 dark:focus-visible:ring-transparent"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
